@@ -146,7 +146,7 @@ public class RangeAttack extends Script implements RenderListener {
         g.drawString("% To Level: " + experience.percentToLvl(Skill.RANGED), 5, 340);
 
     }
-
+//
 
 
 
