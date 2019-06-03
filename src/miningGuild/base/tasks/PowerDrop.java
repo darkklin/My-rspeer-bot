@@ -87,7 +87,6 @@ public class PowerDrop extends Task {
 
 
         return Random.nextInt(200,500);
-
     }
 
 }

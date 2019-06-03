@@ -30,14 +30,24 @@ import java.awt.*;
 @ScriptMeta(version = 0.01, name = "RANGE", category = ScriptCategory.COMBAT, developer = "darkklin", desc = "Traning range")
 public class RangeAttack extends Script implements RenderListener {
 
-    private static int experienceGained;
 
     private static long startTime;
     private static long startXp;
     private static int startLvl;
-
+    private static Foodtype FOOD_TYPE = Foodtype.TUNA;
     String action = "Idle";
     StopWatch time;
+
+    public static int getHealthPercent() {
+        float curr = Skills.getCurrentLevel(Skill.HITPOINTS);
+        float total = Skills.getLevel(Skill.HITPOINTS);
+        float percent = curr / total;
+        return (int) (percent * 100);
+    }
+
+    public static boolean isDead(Npc npc) {
+        return npc == null || Npcs.getAt(npc.getIndex()) == null || npc.getHealthPercent() == 0;
+    }
 
     @Override
     public void onStart() {
@@ -52,8 +62,8 @@ public class RangeAttack extends Script implements RenderListener {
     @Override
     public int loop() {
         Player me = Players.getLocal();
-        Npc enemy = Npcs.getNearest(x -> x.getName().equals("Wolf") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
-        Pickable groundBones = Pickables.getNearest(x -> x.getName().equals("Bones") && x.distance(me) < 20 && x.distance(enemy) < 20);
+        Npc enemy = Npcs.getNearest(x -> x.getName().equals("Hill Giant") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
+        Pickable groundBones = Pickables.getNearest(x -> x.getName().contains("bones") && x.distance(me) < 20 && x.distance(enemy) < 20);
         Pickable groudArrow = Pickables.getNearest(x -> x.getName().contains("Iron arrow") && x.distance(me) < 20 && x.distance(enemy) < 20);
 
         Item invBones = Inventory.getFirst("Bones");
@@ -65,21 +75,53 @@ public class RangeAttack extends Script implements RenderListener {
         if (Dialog.canContinue())
             Dialog.processContinue();
 
-        if (groudArrow != null && enemy.getTargetIndex() == -1 && groudArrow.distance(me)<10) {
+        // Eat food
+        if (getHealthPercent() < 40 && Inventory.contains(FOOD_TYPE.getName())) {
+            Log.info("Player Eat Food");
+
+            Inventory.getFirst(FOOD_TYPE.getName()).interact("Eat");
+
+            Time.sleep(200, 500);
+            if (getHealthPercent() < 50) {
+                Inventory.getFirst(FOOD_TYPE.getName()).interact("Eat");
+
+            }
+        }
+        //Take arrows
+        if (groudArrow != null && enemy.getTargetIndex() == -1 && groudArrow.distance(me) < 10&& !Inventory.isFull()) {
             action = "TakeArrows";
+            Time.sleep(100, 250);
             groudArrow.interact("Take");
             Log.info("Player Takes arrow from the ground");
-            Time.sleepUntil(() -> (groudArrow != null), Random.nextInt(1000, 5000));
+            Time.sleepUntil(() -> (groudArrow != null), Random.nextInt(3000, 5000));
 
+            //Wield arrow random amount
+            int randomStockSize = Random.nextInt(32, 150);
+            if (invArrow != null && invArrow.getStackSize() > randomStockSize) {
+                Log.info("String random Stock size = " + randomStockSize);
+                invArrow.interact("Wield");
+
+            }
         }
-        int randomStocksize =  Random.nextInt(27, 150);
-        if (invArrow != null&& invArrow.getStackSize() > randomStocksize) {
-            Log.info("String random Stock size = "+randomStocksize);
-            invArrow.interact("Wield");
+
+        if (groundBones != null && enemy.getTargetIndex() == -1 && groundBones.distance(me) < 10 && Inventory.isFull()) {
+            action = "TakeBones";
+            Time.sleep(100, 250);
+            groundBones.interact("Take");
+            Log.info("Player Takes Bones from the ground");
+            Time.sleepUntil(() -> (groundBones != null), Random.nextInt(3000, 5000));
+            if (invArrow != null && Inventory.isFull())
+
+            for(Item log :Inventory.getItems(item->item.getName().contains("bones"))){
+                Log.info("Player Bury Bones");
+                log.interact("Bury");
+                Time.sleep(300);
+            }
+
 
         } else {
-            Log.info(me.getTargetIndex());
-            if (me.getTargetIndex() == -1 && !action.equals("TakeArrows")) {
+            // attack
+            if (me.getTargetIndex() == -1 && !action.equals("TakeArrows") && Inventory.contains(FOOD_TYPE.getName())) {
                 action = "Attacking";
 
                 if (enemy != null) {
@@ -92,16 +134,12 @@ public class RangeAttack extends Script implements RenderListener {
                 } else {
                     if (me.getPosition().distance(enemy) > 5) {
                         action = "Walking";
-                        Log.info(action);
-
                         Movement.walkToRandomized(enemy);
                     } else {
                         action = "Waiting for spawn";
-                        Log.info(action);
                     }
                 }
             } else {
-                Log.info(action + "<<<");
                 action = "Attacking";
 
 //                    action = "Waiting/In combat";
@@ -138,7 +176,7 @@ public class RangeAttack extends Script implements RenderListener {
 
 
         final long upTime = System.currentTimeMillis() - startTime;
-
+        g.drawString("Runtime: " + time.toElapsedString(), 5, 270);
         g.drawString("Current Level: " + Skills.getLevel(Skill.RANGED) + ("(" + experience.gainedLvl(Skill.RANGED, startLvl) + ")"), 5, 280);
         g.drawString("XP Gained: " + experience.gainedXp(Skill.RANGED, startXp), 5, 295);
         g.drawString("XP To Level: " + experience.xpToLvl(Skill.RANGED), 5, 310);
@@ -146,8 +184,5 @@ public class RangeAttack extends Script implements RenderListener {
         g.drawString("% To Level: " + experience.percentToLvl(Skill.RANGED), 5, 340);
 
     }
-//
-//
-
 
 }
