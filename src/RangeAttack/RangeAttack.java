@@ -17,9 +17,7 @@ import org.rspeer.runetek.api.scene.Npcs;
 import org.rspeer.runetek.api.scene.Pickables;
 import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.runetek.event.listeners.RenderListener;
-import org.rspeer.runetek.event.listeners.SkillListener;
 import org.rspeer.runetek.event.types.RenderEvent;
-import org.rspeer.runetek.event.types.SkillEvent;
 import org.rspeer.script.Script;
 import org.rspeer.script.ScriptCategory;
 import org.rspeer.script.ScriptMeta;
@@ -58,15 +56,14 @@ public class RangeAttack extends Script implements RenderListener {
         startLvl = Skills.getLevel(Skill.RANGED);
 
     }
-
+//&& (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0)
     @Override
     public int loop() {
         Player me = Players.getLocal();
-        Npc enemy = Npcs.getNearest(x -> x.getName().equals("Hill Giant") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
-        Pickable groundBones = Pickables.getNearest(x -> x.getName().contains("bones") && x.distance(me) < 20 && x.distance(enemy) < 20);
-        Pickable groudArrow = Pickables.getNearest(x -> x.getName().contains("Iron arrow") && x.distance(me) < 20 && x.distance(enemy) < 20);
-
-        Item invBones = Inventory.getFirst("Bones");
+        Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().contains("goblin"));
+        Pickable groundBones = Pickables.getNearest(x -> x.getName().replaceAll(" ","").toLowerCase().contains("bones") && x.distance(me) < 20 && x.distance(enemy) < 20);
+        Pickable groudArrow = Pickables.getNearest(x -> x.getName().toLowerCase().contains("iron arrow") && x.distance(me) < 20 && x.distance(enemy) < 20);
+        Item invBones = Inventory.getFirst("Big bones");
         Item invArrow = Inventory.getFirst("Iron arrow");
 
         if (!Movement.isRunEnabled() && Movement.getRunEnergy() > Random.nextInt(5, 15))
@@ -78,17 +75,14 @@ public class RangeAttack extends Script implements RenderListener {
         // Eat food
         if (getHealthPercent() < 40 && Inventory.contains(FOOD_TYPE.getName())) {
             Log.info("Player Eat Food");
-
             Inventory.getFirst(FOOD_TYPE.getName()).interact("Eat");
-
             Time.sleep(200, 500);
             if (getHealthPercent() < 50) {
                 Inventory.getFirst(FOOD_TYPE.getName()).interact("Eat");
-
             }
         }
         //Take arrows
-        if (groudArrow != null && enemy.getTargetIndex() == -1 && groudArrow.distance(me) < 10&& !Inventory.isFull()) {
+        if (groudArrow != null && enemy.getTargetIndex() == -1 && groudArrow.distance(me) < 10 && !Inventory.isFull()) {
             action = "TakeArrows";
             Time.sleep(100, 250);
             groudArrow.interact("Take");
@@ -104,22 +98,25 @@ public class RangeAttack extends Script implements RenderListener {
             }
         }
 
-        if (groundBones != null && enemy.getTargetIndex() == -1 && groundBones.distance(me) < 10 && Inventory.isFull()) {
+        if (groundBones != null && enemy.getTargetIndex() == -1 && groundBones.distance(me) < 6 && !Inventory.isFull() ) {
             action = "TakeBones";
             Time.sleep(100, 250);
             groundBones.interact("Take");
             Log.info("Player Takes Bones from the ground");
             Time.sleepUntil(() -> (groundBones != null), Random.nextInt(3000, 5000));
-            if (invArrow != null && Inventory.isFull())
 
-            for(Item log :Inventory.getItems(item->item.getName().contains("bones"))){
-                Log.info("Player Bury Bones");
-                log.interact("Bury");
-                Time.sleep(300);
+        }
+        if (invBones != null && Inventory.isFull() && enemy.getTargetIndex() == -1) {
+            Log.info("if  <<<<<<<<<<<<<<<<<<<<<<<<<<<");
+            for (Item bones : Inventory.getItems(item -> item.getName().toLowerCase().contains(" bones"))) {
+                Log.info("should Bury bones ");
+
+                Time.sleepUntil(()->bones.interact("Bury"),5000);
+                Time.sleep(1000,1500);
+
             }
-
-
-        } else {
+        }
+        else {
             // attack
             if (me.getTargetIndex() == -1 && !action.equals("TakeArrows") && Inventory.contains(FOOD_TYPE.getName())) {
                 action = "Attacking";
