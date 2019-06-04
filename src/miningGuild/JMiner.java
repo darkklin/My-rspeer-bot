@@ -7,11 +7,16 @@ import miningGuild.util.AreaUtil;
 import miningGuild.util.MiscUtil;
 import miningGuild.util.rocks.Rock;
 import miningGuild.util.rocks.RockHandler;
+import org.rspeer.runetek.adapter.scene.Npc;
+import org.rspeer.runetek.api.commons.Time;
 import org.rspeer.runetek.api.component.tab.Skill;
+import org.rspeer.runetek.api.scene.Npcs;
+import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.runetek.event.listeners.RenderListener;
 import org.rspeer.runetek.event.listeners.SkillListener;
 import org.rspeer.runetek.event.types.RenderEvent;
 import org.rspeer.runetek.event.types.SkillEvent;
+import org.rspeer.script.ScriptBlockingEvent;
 import org.rspeer.script.ScriptCategory;
 import org.rspeer.script.ScriptMeta;
 import org.rspeer.script.task.Task;
@@ -30,8 +35,26 @@ public class JMiner extends TaskScript implements RenderListener, SkillListener 
     public void onStart() {
         RockHandler.ROCK = Rock.COAL;
         RockHandler.ROCKtWO = Rock.MITHRIL;
+        ScriptBlockingEvent RANDOMS = new ScriptBlockingEvent(this) {
+            @Override
+            public boolean validate() {
+                return Npcs.getNearest(npc -> npc.containsAction("Dismiss")
+                        && npc.getTarget() != null
+                        && npc.getTarget().equals(Players.getLocal())) != null;
+            }
+            @Override
+            public void process() {
+                Npc random = Npcs.getNearest(npc -> npc.containsAction("Dismiss")
+                        && npc.getTarget() != null
+                        && npc.getTarget().equals(Players.getLocal()));
+                if(random != null){
+                    Time.sleep(1250, 3000);
+                    random.interact("Dismiss");
+                }
+            }
+        };
+        addBlockingEvent(RANDOMS);
 
-//        RockHandler.ROCK_AREA = AreaUtil.surroundingPlayer(7);
         this.submit(TASKS);
         Context.startTimer();
     }
