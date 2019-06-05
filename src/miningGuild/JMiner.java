@@ -26,7 +26,7 @@ import org.rspeer.ui.Log;
 
 import java.awt.*;
 
-@ScriptMeta(name = "darkklin", version = 0.1, desc = "Power mines any iron rocks", developer = "JRTN", category = ScriptCategory.MINING)
+@ScriptMeta(name = "Mining guild", version = 0.1, desc = "mining at mining guild", developer = "darkklin", category = ScriptCategory.MINING)
 public class JMiner extends TaskScript implements RenderListener, SkillListener {
 
     private static final Task[] TASKS = new Task[] { new MineRock(), new PowerDrop() };
@@ -34,7 +34,8 @@ public class JMiner extends TaskScript implements RenderListener, SkillListener 
     @Override
     public void onStart() {
         RockHandler.ROCK = Rock.COAL;
-        RockHandler.ROCKtWO = Rock.MITHRIL;
+        RockHandler.ROCK_MITHRIL = Rock.MITHRIL;
+        RockHandler.ROCK_ADM = Rock.ADAMANTITE;
         ScriptBlockingEvent RANDOMS = new ScriptBlockingEvent(this) {
             @Override
             public boolean validate() {
@@ -78,7 +79,6 @@ public class JMiner extends TaskScript implements RenderListener, SkillListener 
 
     @Override
     public void notify(SkillEvent skillEvent) {
-        Log.info("Experience drop received.");
         if(skillEvent.getType() == SkillEvent.TYPE_EXPERIENCE && skillEvent.getSource() == Skill.MINING) {
             Context.incrementOreMined();
             Context.setMining(false);

@@ -33,47 +33,46 @@ public class MineRock extends Task {
             Movement.setWalkFlag(positionOne);
 
 
-            int position = Random.nextInt(1,4);
+            int position = Random.nextInt(1, 4);
             switch (position) {
                 case 1:
                     Log.info("Player Go to position 1");
                     Movement.setWalkFlag(positionOne);
-                    Time.sleepUntil(() -> positionOne.equals(Players.getLocal()),  Random.nextInt(7000,15000));
+                    Time.sleepUntil(() -> positionOne.equals(Players.getLocal()), Random.nextInt(7000, 15000));
                     break;
                 case 2:
                     Log.info("Player Go to position 2");
                     Movement.setWalkFlag(positionTwo);
-                    Time.sleepUntil(() -> positionTwo.equals(Players.getLocal()),  Random.nextInt(7000,15000));
+                    Time.sleepUntil(() -> positionTwo.equals(Players.getLocal()), Random.nextInt(7000, 15000));
                     break;
                 case 3:
                     Log.info("Player Go to position 3");
                     Movement.setWalkFlag(positionThree);
-                    Time.sleepUntil(() -> positionThree.equals(Players.getLocal()),  Random.nextInt(7000,15000));
+                    Time.sleepUntil(() -> positionThree.equals(Players.getLocal()), Random.nextInt(7000, 15000));
                     break;
                 case 4:
                     Log.info("Player Go to position 4");
                     Movement.setWalkFlag(positionFour);
-                    Time.sleepUntil(() -> positionFour.equals(Players.getLocal()),  Random.nextInt(7000,15000));
+                    Time.sleepUntil(() -> positionFour.equals(Players.getLocal()), Random.nextInt(7000, 15000));
                     break;
             }
-
 
 
         }
 
         SceneObject rock = RockHandler.getValidRock();
-        if(rock != null) {
+        if (rock != null) {
             Context.setMining(true);
             rock.interact("Mine");
             Time.sleepUntil(() -> !Context.isMining(), 5000);
             Time.sleep(100, 500); //little bit of randomization
         }
-        if(Movement.isDestinationSet()){
+        if (Movement.isDestinationSet()) {
             Context.checkRunEnergy();
         }
 
 
-        return Random.nextInt(100,400);
+        return Random.nextInt(100, 400);
     }
 
 
