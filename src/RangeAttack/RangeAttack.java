@@ -60,13 +60,13 @@ public class RangeAttack extends Script implements RenderListener {
     @Override
     public int loop() {
         Player me = Players.getLocal();
-        Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().contains("goblin") );
+        Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().contains("cow") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
         Pickable groundBones = Pickables.getNearest(x -> x.getName().replaceAll(" ","").toLowerCase().contains("bones") && x.distance(me) < 20 && x.distance(enemy) < 20);
         Log.info(enemy.getIndex());
 
-        Pickable groudArrow = Pickables.getNearest(x -> x.getName().toLowerCase().contains("steel arrow") && x.distance(me) < 20 && x.distance(enemy) < 20);
+        Pickable groudArrow = Pickables.getNearest(x -> x.getName().toLowerCase().contains("iron arrow") && x.distance(me) < 20 && x.distance(enemy) < 20);
         Item invBones = Inventory.getLast("Big bones","Bones");
-        Item invArrow = Inventory.getFirst("Steel arrow");
+        Item invArrow = Inventory.getFirst("Iron arrow");
 
         if (!Movement.isRunEnabled() && Movement.getRunEnergy() > Random.nextInt(5, 15))
             Movement.toggleRun(true);
@@ -100,27 +100,28 @@ public class RangeAttack extends Script implements RenderListener {
             invArrow.interact("Wield");
 
         }
-        if (groundBones != null && enemy.getTargetIndex() == -1 && groundBones.distance(me) < 6 && !Inventory.isFull() ) {
-            action = "TakeBones";
-            Time.sleep(250, 450);
-            groundBones.interact("Take");
-            Log.info("Player Takes Bones from the ground");
-            Time.sleepUntil(() -> (groundBones != null), Random.nextInt(3000, 5000));
-
-        }
-        if (invBones != null && Inventory.isFull() && enemy.getTargetIndex() == -1) {
-            Log.info("if  <<<<<<<<<<<<<<<<<<<<<<<<<<<");
-            for (Item bones : Inventory.getItems(item -> item.getName().toLowerCase().contains("bones"))) {
-                Log.info("should Bury bones ");
-
-                Time.sleepUntil(()->bones.interact("Bury"),5000);
-                Time.sleep(1000,1500);
-
-            }
-        }
+//        if (groundBones != null && enemy.getTargetIndex() == -1 && groundBones.distance(me) < 6 && !Inventory.isFull() ) {
+//            action = "TakeBones";
+//            Time.sleep(250, 450);
+//            groundBones.interact("Take");
+//            Log.info("Player Takes Bones from the ground");
+//            Time.sleepUntil(() -> (groundBones != null), Random.nextInt(3000, 5000));
+//
+//        }
+//        if (invBones != null && Inventory.isFull() && enemy.getTargetIndex() == -1) {
+//            Log.info("if  <<<<<<<<<<<<<<<<<<<<<<<<<<<");
+//            for (Item bones : Inventory.getItems(item -> item.getName().toLowerCase().contains("bones"))) {
+//                Log.info("should Bury bones ");
+//
+//                Time.sleepUntil(()->bones.interact("Bury"),5000);
+//                Time.sleep(1000,1500);
+//
+//            }
+//        }
         else {
             // attack
-            if (me.getTargetIndex() == -1 && !action.equals("TakeArrows") && Inventory.contains(FOOD_TYPE.getName()) && !action.equals("TakeBones")) {
+            //&& Inventory.contains(FOOD_TYPE.getName())
+            if (me.getTargetIndex() == -1 && !action.equals("TakeArrows")  && !action.equals("TakeBones")) {
                 action = "Attacking";
 
                 if (enemy != null) {

@@ -1,6 +1,7 @@
 package killCowTakeHide;
 
 import miningGuild.base.Context;
+import org.rspeer.runetek.adapter.scene.Npc;
 import org.rspeer.runetek.adapter.scene.Pickable;
 import org.rspeer.runetek.adapter.scene.Player;
 import org.rspeer.runetek.adapter.scene.SceneObject;
@@ -11,6 +12,7 @@ import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.movement.position.Area;
 import org.rspeer.runetek.api.movement.position.Position;
+import org.rspeer.runetek.api.scene.Npcs;
 import org.rspeer.runetek.api.scene.Pickables;
 import org.rspeer.runetek.api.scene.Players;
 import  org.rspeer.runetek.api.commons.math.Random;
@@ -33,7 +35,8 @@ public class BoneLooter extends Script implements RenderListener {
     public static final Area COW_AREA = Area.rectangular(3241, 3298, 3265, 3258);
     public static final Position GATE_POSITION = new Position(3253, 3270, 0);
     public static final Area BANK = Area.rectangular(3210, 3220, 3208, 3218,2);
-
+    Player me = Players.getLocal();
+    String action = "Idle";
 
     private StopWatch stopWatch = StopWatch.start();
 
@@ -131,6 +134,7 @@ public class BoneLooter extends Script implements RenderListener {
             }
         } else {
             if (local.getFloorLevel() == 0) {
+                Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().equalsIgnoreCase("cow")&& (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
 
                 if (COW_AREA.contains(local)) {
                     final SceneObject gate = SceneObjects.getNearest(1558);
@@ -140,9 +144,10 @@ public class BoneLooter extends Script implements RenderListener {
                         Time.sleep(300);
                         gate.interact("Open");
                     } else {
-                        if (local.getAnimation() == -1 && !local.isMoving()) {
+                        final Pickable cowhide = Pickables.getNearest("Cowhide");
+
+                        if (local.getAnimation() == -1 && !local.isMoving() && cowhide.getStackSize() > 3) {
                             Log.info("Looking for cowHide..");
-                            final Pickable cowhide = Pickables.getNearest("Cowhide");
                             Position bonesPos;
                             if (cowhide != null) {
                                 if (Movement.isWalkable(cowhide))
@@ -156,6 +161,30 @@ public class BoneLooter extends Script implements RenderListener {
                                 Movement.setWalkFlag(GATE_POSITION);
 
                             }
+                        }
+                        else
+                            if(me.getTargetIndex() == -1 ) {
+                            action = "Attacking";
+
+                            if (enemy != null) {
+                                Log.info(action);
+                                if (!me.isMoving()) {
+                                    enemy.interact("Attack");
+                                    Time.sleepUntil(me::isAnimating, Random.nextInt(4000, 5000));
+
+                                }
+                            } else {
+                                if (me.getPosition().distance(enemy) > 5) {
+                                    action = "Walking";
+                                    Movement.walkToRandomized(enemy);
+                                } else {
+                                    action = "Waiting for spawn";
+                                }
+                            }
+                        } else {
+                            action = "Attacking";
+
+//                    action = "Waiting/In combat";
                         }
                     }
                 } else {
