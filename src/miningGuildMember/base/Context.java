@@ -1,6 +1,7 @@
-package miningGuild.base;
+package miningGuildMember.base;
 
-import miningGuild.util.rocks.RockHandler;
+import miningGuildMember.util.rocks.RockHandler;
+import miningGuildMember.base.tasks.PowerDrop;
 import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.scene.Players;
@@ -44,7 +45,7 @@ public class Context {
 
     public static void incrementOreMined() {
         oreMined++;
-        experienceGained += RockHandler.ROCK.getExperience();
+        experienceGained += RockHandler.ROCK_ADM.getExperience();
     }
 
     public static long getRunTime() {

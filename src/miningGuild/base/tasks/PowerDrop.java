@@ -1,10 +1,11 @@
 package miningGuild.base.tasks;
 
-import miningGuild.base.Context;
+import miningGuildMember.base.Context;
 import org.rspeer.runetek.adapter.component.Item;
 import org.rspeer.runetek.adapter.scene.Player;
 import org.rspeer.runetek.adapter.scene.SceneObject;
 import org.rspeer.runetek.api.commons.Time;
+import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.Bank;
 import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.runetek.api.movement.Movement;
@@ -12,8 +13,6 @@ import org.rspeer.runetek.api.movement.position.Area;
 import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.runetek.api.scene.SceneObjects;
 import org.rspeer.script.task.Task;
-import  org.rspeer.runetek.api.commons.math.Random;
-
 import org.rspeer.ui.Log;
 
 import java.util.function.Predicate;

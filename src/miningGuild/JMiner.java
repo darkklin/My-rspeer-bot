@@ -3,7 +3,6 @@ package miningGuild;
 import miningGuild.base.Context;
 import miningGuild.base.tasks.MineRock;
 import miningGuild.base.tasks.PowerDrop;
-import miningGuild.util.AreaUtil;
 import miningGuild.util.MiscUtil;
 import miningGuild.util.rocks.Rock;
 import miningGuild.util.rocks.RockHandler;
@@ -21,7 +20,6 @@ import org.rspeer.script.ScriptCategory;
 import org.rspeer.script.ScriptMeta;
 import org.rspeer.script.task.Task;
 import org.rspeer.script.task.TaskScript;
-import org.rspeer.ui.Log;
 ;
 
 import java.awt.*;

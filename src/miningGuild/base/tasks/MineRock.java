@@ -1,7 +1,7 @@
 package miningGuild.base.tasks;
 
-import miningGuild.base.Context;
 import miningGuild.util.rocks.RockHandler;
+import miningGuildMember.base.Context;
 import org.rspeer.runetek.adapter.scene.SceneObject;
 import org.rspeer.runetek.api.commons.Time;
 import org.rspeer.runetek.api.commons.math.Random;

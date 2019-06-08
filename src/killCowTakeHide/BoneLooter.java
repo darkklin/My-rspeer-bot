@@ -7,6 +7,7 @@ import org.rspeer.runetek.adapter.scene.Player;
 import org.rspeer.runetek.adapter.scene.SceneObject;
 import org.rspeer.runetek.api.commons.StopWatch;
 import org.rspeer.runetek.api.commons.Time;
+import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.Bank;
 import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.runetek.api.movement.Movement;
@@ -15,7 +16,6 @@ import org.rspeer.runetek.api.movement.position.Position;
 import org.rspeer.runetek.api.scene.Npcs;
 import org.rspeer.runetek.api.scene.Pickables;
 import org.rspeer.runetek.api.scene.Players;
-import  org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.scene.SceneObjects;
 import org.rspeer.runetek.event.listeners.RenderListener;
 import org.rspeer.runetek.event.types.RenderEvent;
@@ -32,27 +32,30 @@ import java.util.concurrent.ThreadLocalRandom;
 public class BoneLooter extends Script implements RenderListener {
 
 
-    public static final Area COW_AREA = Area.rectangular(3241, 3298, 3265, 3258);
+    public static final Area COW_AREA = Area.rectangular(3265, 3255, 3240, 3298);
     public static final Position GATE_POSITION = new Position(3253, 3270, 0);
-    public static final Area BANK = Area.rectangular(3210, 3220, 3208, 3218,2);
+    public static final Area BANK = Area.rectangular(3210, 3220, 3208, 3218, 2);
     Player me = Players.getLocal();
+
     String action = "Idle";
 
     private StopWatch stopWatch = StopWatch.start();
 
     private long totalHides;
     private long previousHides;
+    int toggleNextRun = 20;
 
 
-    public  void checkRunEnergy(){
-        int toggleNextRun = 20;
-        if(Movement.getRunEnergy() > toggleNextRun && !Movement.isRunEnabled()){
+    public void checkRunEnergy() {
+
+        if (Movement.getRunEnergy() > toggleNextRun && !Movement.isRunEnabled()) {
             Movement.toggleRun(true);
             Log.info("should run");
             //Will toggle the run energy when it is between 20 and 30
             toggleNextRun = ThreadLocalRandom.current().nextInt(20, 40 + 1);
         }
     }
+
     private void bank() {
 
         if (!Bank.isOpen()) {
@@ -60,9 +63,15 @@ public class BoneLooter extends Script implements RenderListener {
             Bank.open();
             Time.sleep(230, 600);
             Bank.depositInventory();
-            Time.sleepUntil(() -> Inventory.isEmpty(), 10000);
+            Time.sleepUntil(() -> Inventory.isEmpty(), 1000);
             Bank.close();
+            Time.sleep(230, 600);
+
         }
+    }
+
+    private int randomPath() {
+        return Random.nextInt(1, 2);
     }
 
     @Override
@@ -75,7 +84,7 @@ public class BoneLooter extends Script implements RenderListener {
         Player local = Players.getLocal();
         int floorLevel = local.getFloorLevel();
         Area BANK_AREA = Area.rectangular(3200, 3208, 3215, 3228, floorLevel);
-        long inventoryCount = Inventory.getCount(526);
+        long inventoryCount = Inventory.getCount(1739);
 
         if (inventoryCount > previousHides) {
             totalHides += (inventoryCount - previousHides);
@@ -83,9 +92,6 @@ public class BoneLooter extends Script implements RenderListener {
         previousHides = inventoryCount;
 
 
-        if(Movement.isDestinationSet()){
-            Context.checkRunEnergy();
-        }
 
         if (Inventory.isFull()) {
             if (BANK_AREA.contains(local)) {
@@ -93,21 +99,21 @@ public class BoneLooter extends Script implements RenderListener {
                     final SceneObject staircase = SceneObjects.getNearest(sceneObject -> sceneObject.getName().equalsIgnoreCase("Staircase"));
                     if (staircase != null) {
                         Log.info("Attempting to walk upstairs..");
-                        Time.sleepUntil(()-> staircase.interact("Climb-up"),5000);
-                        Time.sleepUntil(()-> (local.getFloorLevel() == 2),Random.nextInt(4000,7000));
+                        Time.sleepUntil(() -> staircase.interact("Climb-up"), 5000);
+                        Time.sleepUntil(() -> (local.getFloorLevel() == 2), Random.nextInt(4000, 7000));
 
                     }
                 } else if (local.getFloorLevel() == 2) {
                     Log.info("Attempting to bank inventory..");
                     Movement.setWalkFlag(BANK.getCenter());
-                    Time.sleepUntil(()->BANK.contains(local),Random.nextInt(5000,8000));
+                    Time.sleepUntil(() -> BANK.contains(local), Random.nextInt(5000, 8000));
                     bank();
                 }
             } else {
                 if (COW_AREA.contains(local)) {
                     if (local.distance(COW_AREA.getCenter()) > 30) {
                         Movement.setWalkFlag(COW_AREA.getCenter());
-                        Time.sleepUntil(()->COW_AREA.contains(local), Random.nextInt(8000,16000));
+                        Time.sleepUntil(() -> COW_AREA.contains(local), Random.nextInt(8000, 16000));
 
 
                     }
@@ -121,76 +127,63 @@ public class BoneLooter extends Script implements RenderListener {
                     } else {
                         Log.info("Walking to bank..");
                         Movement.walkToRandomized(BANK_AREA.getCenter());
-                        Time.sleepUntil(()->BANK_AREA.contains(local),Random.nextInt(3500,8000));
+                        Time.sleepUntil(() -> BANK_AREA.contains(local), Random.nextInt(3500, 8000));
                     }
 
                 } else {
                     Log.info("Walking to bank.. else");
                     Movement.setWalkFlag(BANK_AREA.getCenter());
-                    Time.sleepUntil(()->BANK_AREA.contains(local),Random.nextInt(8000,16000));
+                    Time.sleepUntil(() -> BANK_AREA.contains(local), Random.nextInt(8000, 16000));
 
                 }
 
             }
         } else {
             if (local.getFloorLevel() == 0) {
-                Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().equalsIgnoreCase("cow")&& (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
+                Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().equalsIgnoreCase("cow") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
 
                 if (COW_AREA.contains(local)) {
+                    if (Movement.isDestinationSet()) {
+                        checkRunEnergy();
+                    }
                     final SceneObject gate = SceneObjects.getNearest(1558);
                     if (gate != null && gate.containsAction("Open") && COW_AREA.contains(gate)) {
                         Movement.setWalkFlag(gate);
                         Log.info("Opening gate");
                         Time.sleep(300);
                         gate.interact("Open");
-                    } else {
-                        final Pickable cowhide = Pickables.getNearest("Cowhide");
-
-                        if (local.getAnimation() == -1 && !local.isMoving() && cowhide.getStackSize() > 3) {
-                            Log.info("Looking for cowHide..");
-                            Position bonesPos;
-                            if (cowhide != null) {
-                                if (Movement.isWalkable(cowhide))
-                                    Random.nextInt(250,400);
-                                        cowhide.interact("Take");
-
-                            }
-
-                            else {
-                                Log.info("12");
-                                Movement.setWalkFlag(GATE_POSITION);
-
-                            }
-                        }
-                        else
-                            if(me.getTargetIndex() == -1 ) {
-                            action = "Attacking";
-
-                            if (enemy != null) {
-                                Log.info(action);
-                                if (!me.isMoving()) {
-                                    enemy.interact("Attack");
-                                    Time.sleepUntil(me::isAnimating, Random.nextInt(4000, 5000));
-
-                                }
-                            } else {
-                                if (me.getPosition().distance(enemy) > 5) {
-                                    action = "Walking";
-                                    Movement.walkToRandomized(enemy);
-                                } else {
-                                    action = "Waiting for spawn";
-                                }
-                            }
-                        } else {
-                            action = "Attacking";
-
-//                    action = "Waiting/In combat";
-                        }
+                        Time.sleepUntil(() -> gate.containsAction("Close"), 5000);
                     }
+
+                    final Pickable cowhide = Pickables.getNearest("Cowhide");
+                    if (cowhide != null && enemy.getTargetIndex() == -1 && cowhide.distance() < 10) {
+                        action = "TakeHide";
+
+                        Log.info("Looking for cowHide..");
+                        cowhide.interact("Take");
+                        Time.sleep(250, 450);
+
+                    }
+                    else{
+                        action = "Attacking";
+                    }
+                    if (enemy != null && action!="TakeHide") {
+//                        action = "Attacking";
+                        Log.info(action);
+                        Log.info("if attck ");
+                        Log.info(enemy.interact("Attack"));
+
+                        enemy.interact("Attack");
+                        Time.sleepUntil(()->(!enemy.isAnimating()),4000);
+//                        Time.sleep(250, 450);
+
+
+                    }
+
                 } else {
                     Log.info("Walking to cows..");
                     Movement.setWalkFlag(COW_AREA.getCenter());
-                    Time.sleepUntil(()->COW_AREA.contains(local),Random.nextInt(8000,16000));
+                    Time.sleepUntil(() -> COW_AREA.contains(local), Random.nextInt(8000, 16000));
                 }
             } else {
                 if (BANK_AREA.contains(local)) {
@@ -198,16 +191,16 @@ public class BoneLooter extends Script implements RenderListener {
                         Log.info("Attempting to walk downstairs..");
                         final SceneObject staircase = SceneObjects.getNearest(sceneObject -> sceneObject.getName().equalsIgnoreCase("Staircase"));
                         if (staircase != null) {
-                            Time.sleepUntil(()->staircase.interact("Climb-Down"),5000);
-                            Time.sleepUntil(()->(local.getFloorLevel()==0),Random.nextInt(4000,6800));
+                            Time.sleepUntil(() -> staircase.interact("Climb-Down"), 5000);
+                            Time.sleepUntil(() -> (local.getFloorLevel() == 0), Random.nextInt(4000, 6800));
                         }
                     } else if (local.getFloorLevel() == 2) {
                         Log.info("Attempting to walk downstairs..");
                         final SceneObject staircase = SceneObjects.getNearest(sceneObject -> sceneObject.getName().equalsIgnoreCase("Staircase"));
                         if (staircase != null) {
                             staircase.interact("Climb-Down");
-                            Time.sleepUntil(()->staircase.interact("Climb-Down"),5000);
-                            Time.sleepUntil(()->(local.getFloorLevel()==1),Random.nextInt(4000,6000));
+                            Time.sleepUntil(() -> staircase.interact("Climb-Down"), 5000);
+                            Time.sleepUntil(() -> (local.getFloorLevel() == 1), Random.nextInt(4000, 6000));
 
 
                         }
