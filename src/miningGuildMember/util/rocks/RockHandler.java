@@ -24,9 +24,10 @@ public class RockHandler {
         short[] rockColors = rock.getDefinition().getNewColors();
         if (rockColors == null || rockColors.length == 0)
             return false;
-        return (rockColors != null && Arrays.equals(rockColors, ROCK_ADM.getColor()) || Arrays.equals(rockColors, ROCK_MITHRIL.getColor())
+        return (rockColors != null && Arrays.equals(rockColors, ROCK_ADM.getColor())
                 && ROCK_AREA.contains(rock.getPosition()));
     };
+    //|| Arrays.equals(rockColors, ROCK_MITHRIL.getColor()
 //&& Arrays.equals(rockColors, ROCK.getColor())
 
     public static SceneObject getValidRock() {

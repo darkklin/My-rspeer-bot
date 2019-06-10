@@ -33,7 +33,7 @@ public class JMiner extends TaskScript implements RenderListener, SkillListener 
     @Override
     public void onStart() {
 //        RockHandler.ROCK = Rock.COAL;
-        RockHandler.ROCK_MITHRIL = Rock.MITHRIL;
+//        RockHandler.ROCK_MITHRIL = Rock.MITHRIL;
         RockHandler.ROCK_ADM = Rock.ADAMANTITE;
         ScriptBlockingEvent RANDOMS = new ScriptBlockingEvent(this) {
             @Override
