@@ -32,7 +32,7 @@ public class RangeAttack extends Script implements RenderListener {
     private static long startTime;
     private static long startXp;
     private static int startLvl;
-    private static Foodtype FOOD_TYPE = Foodtype.MANTA_RAY;
+    private static Foodtype FOOD_TYPE = Foodtype.SWORDFISH;
     String action = "Idle";
     StopWatch time;
 
@@ -61,10 +61,10 @@ public class RangeAttack extends Script implements RenderListener {
     public int loop() {
         Player me = Players.getLocal();
         Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().contains("hill") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
-        Pickable groundBones = Pickables.getNearest(x -> x.getName().replaceAll(" ","").toLowerCase().contains("bones") && x.distance(me) < 20 && x.distance(enemy) < 20);
+        Pickable groundBones = Pickables.getNearest(x -> x.getName().replaceAll(" ","").toLowerCase().contains("big") && x.distance(me) < 20 && x.distance(enemy) < 20);
 
         Pickable groudArrow = Pickables.getNearest(x -> x.getName().toLowerCase().contains("iron arrow") && x.distance(me) < 20 && x.distance(enemy) < 20);
-        Item invBones = Inventory.getLast("Big bones","Bones");
+        Item invBones = Inventory.getLast("Big bones");
         Item invArrow = Inventory.getFirst("Iron arrow");
 
         if (!Movement.isRunEnabled() && Movement.getRunEnergy() > Random.nextInt(5, 15))
