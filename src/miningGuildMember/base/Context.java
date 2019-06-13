@@ -70,7 +70,7 @@ public class Context {
             Movement.toggleRun(true);
             Log.info("should run");
             //Will toggle the run energy when it is between 20 and 30
-            toggleNextRun = ThreadLocalRandom.current().nextInt(20, 30 + 1);
+            toggleNextRun = ThreadLocalRandom.current().nextInt(40, 60 + 1);
         }
     }
     

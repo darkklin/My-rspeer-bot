@@ -72,22 +72,22 @@ public class PowerDrop extends Task {
         switch (position) {
             case 1:
                 Log.info("Player Go to position 1");
-                Movement.setWalkFlag(POS_ONE);
-                Time.sleepUntil(() -> POS_ONE.equals(Players.getLocal()), Random.nextInt(5000, 7000));
+                Movement.walkToRandomized(POS_ONE);
+                Time.sleepUntil(() -> POS_ONE.equals(Players.getLocal()), Random.nextInt(3000, 7000));
                 break;
             case 2:
                 Log.info("Player Go to position 2");
-                Movement.setWalkFlag(POS_TWO);
-                Time.sleepUntil(() -> POS_TWO.equals(Players.getLocal()), Random.nextInt(5000, 7000));
+                Movement.walkToRandomized(POS_TWO);
+                Time.sleepUntil(() -> POS_TWO.equals(Players.getLocal()), Random.nextInt(3000, 7000));
                 break;
             case 3:
                 Log.info("Player Go to position 3");
-                Movement.setWalkFlag(POS_THREE);
-                Time.sleepUntil(() -> POS_THREE.equals(Players.getLocal()), Random.nextInt(10000, 15000));
+                Movement.walkToRandomized(POS_THREE);
+                Time.sleepUntil(() -> POS_THREE.equals(Players.getLocal()), Random.nextInt(6000, 15000));
                 break;
             case 4:
                 Log.info("Player Go to position 4");
-                Movement.setWalkFlag(POS_four);
+                Movement.walkToRandomized(POS_four);
                 Time.sleepUntil(() -> POS_four.equals(Players.getLocal()), Random.nextInt(5000, 7000));
                 break;
         }

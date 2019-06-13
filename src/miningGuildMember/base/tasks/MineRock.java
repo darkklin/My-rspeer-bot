@@ -26,12 +26,9 @@ public class MineRock extends Task {
             Context.setMining(true);
             rock.interact("Mine");
             Time.sleepUntil(() -> !Context.isMining(), 5000);
-            Time.sleep(400, 600); //little bit of randomization
+            Time.sleep(680, 800); //little bit of randomization
         }
-        else{
-            Log.info("Should walk owey from the dor ");
-            Movement.walkTo(RockHandler.ROCK_AREA.getCenter());
-        }
+
         if (Movement.isDestinationSet()) {
             Context.checkRunEnergy();
         }
