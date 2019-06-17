@@ -1,11 +1,13 @@
 package motherlodeMine;
 
 
+import org.rspeer.runetek.adapter.component.InterfaceComponent;
 import org.rspeer.runetek.adapter.scene.Player;
 import org.rspeer.runetek.adapter.scene.SceneObject;
 import org.rspeer.runetek.api.commons.Time;
 import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.Bank;
+import org.rspeer.runetek.api.component.Interfaces;
 import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.movement.position.Area;
@@ -26,39 +28,54 @@ public class Main extends Script {
 
     Player me = Players.getLocal();
     String action = "null";
-    int depositCount = 3;
+    int depositCount = 0;
     int withdraw = 0;
-
 
     @Override
     public int loop() {
         final SceneObject oreVein = SceneObjects.getNearest(x -> x.getName().contains("Ore vein") && x.getY() != 5685 && x.getY() != 5684 && x.getY() != 5683 && x.getY() != 5682);
         Position bankPosition = new Position(3759, 5666, 0);
-
-        if (depositCount == 3) {
-            SceneObject sack = SceneObjects.getNearest("Sack");
-            sack.interact("search");
-            if (Inventory.isFull())
-            {
-                Movement.walkToRandomized(bankPosition);
-                Time.sleepUntil(()->bankPosition.equals(me),2500);
-                if (Bank.isOpen())
-                {
-                    Bank.depositInventory();
-                }
-                else
-                {
-                    Bank.open();
-                }
+        InterfaceComponent nmDirtInDeposit = Interfaces.getComponent(382, 4, 2);
+        int nmDirt = Integer.parseInt(nmDirtInDeposit.getText());
+        Log.info(nmDirt);
+        if (nmDirt < 84 && nmDirt != 0 && depositCount == 3 && !Inventory.contains(12011) || nmDirtInDeposit.getTextColor() == 16711680) {
+//            depositCount = 0;
+            Log.info("should take the ore ");
+            if (!Inventory.isFull()) {
+                SceneObject sack = SceneObjects.getNearest("Sack");
+                sack.interact("search");
+                Time.sleepUntil(() -> (Inventory.getCount() > 1), 5000);
             }
 
+            if (Inventory.getCount() > 1) {
+                final SceneObject bankChest = SceneObjects.getNearest("Bank Chest");
+                Movement.walkTo(bankChest);
+                Time.sleepUntil(() -> me.getPosition().equals(bankChest), Random.nextInt(2000, 4000));
+                bankChest.interact("Use");
+                Time.sleepUntil(() -> Bank.isOpen(), Random.nextInt(2500, 5600));
+                if (Bank.isOpen()) {
+                    Time.sleep(1000, 1700);
+
+                    Bank.depositInventory();
+                    Time.sleep(1000);
+
+                    Bank.close();
+                    Time.sleep(500, 1000);
+                    if (Inventory.isEmpty()) {
+                        ++withdraw;
+                    }
 
 
-        }
-        else{
+                }
+
+            }
+
+        } else {
+            Log.info("iam here");
+            Log.info(depositCount);
+
             if (ORE_VEIN_AREA.contains(oreVein) && !Inventory.isFull()) {
-
-
+                withdraw = 0;
                 if (oreVein != null) {
 
                     if (oreVein != null) {
@@ -103,17 +120,8 @@ public class Main extends Script {
 
                 }
 
-                if (depositArea.contains(me)) {
-                    Log.info("should deposit the dirt");
-                    SceneObject hepper = SceneObjects.getNearest("Hopper");
 
-                    hepper.interact("Deposit");
-                    Time.sleepUntil(() -> Inventory.containsAll(12011), 2500);
-
-
-                }
-
-            } else if (!ORE_VEIN_AREA.contains(me) && !Inventory.isFull()) {
+            } else if (!ORE_VEIN_AREA.contains(me) && !Inventory.isFull() && nmDirtInDeposit.getTextColor() != 16711680 ) {
                 Log.info("Else if ");
 
                 if (fallRockPosition.contains(rockFallOne) || fallRockPosition.contains(rockFallTwo)) {
@@ -138,6 +146,18 @@ public class Main extends Script {
 
 
             }
+
+            if (depositArea.contains(me) && Inventory.contains(12011)) {
+                Log.info("should deposit the dirt");
+                SceneObject hepper = SceneObjects.getNearest("Hopper");
+
+                hepper.interact("Deposit");
+                Time.sleepUntil(() -> Inventory.containsAll(12011), 2500);
+                ++depositCount;
+
+
+            }
+
         }
 
 
