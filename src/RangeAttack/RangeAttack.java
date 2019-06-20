@@ -32,7 +32,7 @@ public class RangeAttack extends Script implements RenderListener {
     private static long startTime;
     private static long startXp;
     private static int startLvl;
-    private static Foodtype FOOD_TYPE = Foodtype.SWORDFISH;
+    private static Foodtype FOOD_TYPE = Foodtype.MONKFISH;
     String action = "Idle";
     StopWatch time;
 
@@ -52,8 +52,8 @@ public class RangeAttack extends Script implements RenderListener {
         time = StopWatch.start();
 
         startTime = System.currentTimeMillis();
-        startXp = Skills.getExperience(Skill.ATTACK);
-        startLvl = Skills.getLevel(Skill.ATTACK);
+        startXp = Skills.getExperience(Skill.STRENGTH);
+        startLvl = Skills.getLevel(Skill.STRENGTH);
 
     }
 //&& (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0)
@@ -176,11 +176,11 @@ public class RangeAttack extends Script implements RenderListener {
 
         final long upTime = System.currentTimeMillis() - startTime;
         g.drawString("Runtime: " + time.toElapsedString(), 5, 270);
-        g.drawString("Current Level: " + Skills.getLevel(Skill.ATTACK) + ("(" + experience.gainedLvl(Skill.ATTACK, startLvl) + ")"), 5, 280);
-        g.drawString("XP Gained: " + experience.gainedXp(Skill.ATTACK, startXp), 5, 295);
-        g.drawString("XP To Level: " + experience.xpToLvl(Skill.ATTACK), 5, 310);
-        g.drawString("XP/HR: " + experience.xpHour(Skill.ATTACK, startXp, upTime), 5, 325);
-        g.drawString("% To Level: " + experience.percentToLvl(Skill.ATTACK), 5, 340);
+        g.drawString("Current Level: " + Skills.getLevel(Skill.STRENGTH) + ("(" + experience.gainedLvl(Skill.STRENGTH, startLvl) + ")"), 5, 280);
+        g.drawString("XP Gained: " + experience.gainedXp(Skill.STRENGTH, startXp), 5, 295);
+        g.drawString("XP To Level: " + experience.xpToLvl(Skill.STRENGTH), 5, 310);
+        g.drawString("XP/HR: " + experience.xpHour(Skill.STRENGTH, startXp, upTime), 5, 325);
+        g.drawString("% To Level: " + experience.percentToLvl(Skill.STRENGTH), 5, 340);
 
     }
 

@@ -1,15 +1,13 @@
-package miningGuildMember.base.tasks;
+package powerlevelMining.base.tasks;
 
-import miningGuildMember.base.Context;
-import miningGuildMember.util.rocks.RockHandler;
-import org.rspeer.runetek.adapter.scene.Player;
+import powerlevelMining.base.Context;
+import powerlevelMining.util.rocks.RockHandler;
 import org.rspeer.runetek.adapter.scene.SceneObject;
 import org.rspeer.runetek.api.commons.Time;
 import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.script.task.Task;
-import org.rspeer.ui.Log;
 
 public class MineRock extends Task {
     @Override
@@ -28,7 +26,7 @@ public class MineRock extends Task {
             Context.setMining(true);
             rock.interact("Mine");
             Time.sleepUntil(() -> !Context.isMining(), 5000);
-            Time.sleep(680, 800); //little bit of randomization
+            Time.sleep(400, 600); //little bit of randomization
         }
 
         if (Movement.isDestinationSet()) {
