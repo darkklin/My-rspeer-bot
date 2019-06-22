@@ -2,6 +2,7 @@ package woodcutting.task;
 
 import org.rspeer.runetek.adapter.component.Item;
 import org.rspeer.runetek.api.commons.Time;
+import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.script.task.Task;
 import woodcutting.WuCutting;
@@ -19,9 +20,9 @@ public class Drop extends Task {
     public int execute() {
         for(Item log :Inventory.getItems(item->item.getName().equals(WuCutting.tree.getLogName()))){
             log.interact(DROP_ACTION);
-            Time.sleep(300);
+            Time.sleep(350,800);
         }
 
-        return 300;
+        return Random.nextInt(300,1000);
     }
 }

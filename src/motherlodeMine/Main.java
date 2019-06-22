@@ -2,6 +2,7 @@ package motherlodeMine;
 
 
 import org.rspeer.runetek.adapter.component.InterfaceComponent;
+import org.rspeer.runetek.adapter.component.Item;
 import org.rspeer.runetek.adapter.scene.Player;
 import org.rspeer.runetek.adapter.scene.SceneObject;
 import org.rspeer.runetek.api.commons.Time;
@@ -34,6 +35,8 @@ public class Main extends Script {
     @Override
     public int loop() {
         final SceneObject oreVein = SceneObjects.getNearest(x -> x.getName().contains("Ore vein") && x.getY() != 5685 && x.getY() != 5684 && x.getY() != 5683 && x.getY() != 5682);
+        SceneObject brokenStrut = SceneObjects.getNearest("Broken strut");
+
         Position bankPosition = new Position(3759, 5666, 0);
         InterfaceComponent nmDirtInDeposit = Interfaces.getComponent(382, 4, 2);
         int nmDirt = Integer.parseInt(nmDirtInDeposit.getText());
@@ -63,7 +66,7 @@ public class Main extends Script {
 
                 }
             }
-            if (nmDirt==0) {
+            if (nmDirt == 0) {
                 depositCount = 0;
             }
 
@@ -74,20 +77,21 @@ public class Main extends Script {
             if (ORE_VEIN_AREA.contains(oreVein) && !Inventory.isFull()) {
                 if (oreVein != null) {
 
-                        Log.info(oreVein.distance());
-                        Log.info("should mining dirt ");
-                        String action = "mining";
-                        oreVein.interact("Mine");
-                        Random.nextInt(500,2000);
-                        if (oreVein.distance()==1)
-                        {
-                            Time.sleepUntil(() -> !me.isAnimating(), Random.nextInt(3500, 6000));
+                    Log.info(oreVein.distance());
+                    Log.info("should mining dirt ");
+                    String action = "mining";
+                    oreVein.interact("Mine");
+                    if (oreVein.distance() == 1 && me.isAnimating()) {
+                        Log.info("here ...");
+                        Random.nextInt(600, 2000);
 
-                        }
+                        Time.sleepUntil(() -> oreVein.distance() > 1, Random.nextInt(3500, 6000));
+
+                    }
 
 
-
-                } if (oreVein.distance() == 0){
+                }
+                if (oreVein.distance() == 0) {
                     Position position = new Position(3739, 5689, 0);
                     Movement.walkToRandomized(position);
 
@@ -103,18 +107,17 @@ public class Main extends Script {
 
 
                 Log.info("if ");
-                Log.info(fallRockPosition.contains(rockFallOne) || fallRockPosition.contains(rockFallTwo) && !area.contains(me));
                 if (fallRockPosition.contains(rockFallOne) || fallRockPosition.contains(rockFallTwo) && !area.contains(me)) {
 
                     if (rockFallOne != null) {
                         rockFallOne.interact("Mine");
-                        Time.sleepUntil(() -> (rockFallOne == null), 6000);
+                        Time.sleepUntil(() -> (rockFallOne == null), 4000);
                     }
 
 
                     if (rockFallTwo != null) {
                         rockFallTwo.interact("Mine");
-                        Time.sleepUntil(() -> (rockFallTwo == null), 6000);
+                        Time.sleepUntil(() -> (rockFallTwo == null), 4000);
                     }
                 } else {
                     Movement.walkToRandomized(depositArea.getCenter());
@@ -123,7 +126,7 @@ public class Main extends Script {
                 }
 
 
-            } else if (!ORE_VEIN_AREA.contains(me) && !Inventory.isFull() && nmDirtInDeposit.getTextColor() != 16711680 ) {
+            } else if (!ORE_VEIN_AREA.contains(me) && !Inventory.isFull() && nmDirtInDeposit.getTextColor() != 16711680) {
                 Log.info("Else if ");
 
                 if (fallRockPosition.contains(rockFallOne) || fallRockPosition.contains(rockFallTwo)) {
@@ -148,7 +151,7 @@ public class Main extends Script {
 
 
             }
-            if (depositArea.contains(me) && Inventory.contains(12011)&& Inventory.isFull()) {
+            if (depositArea.contains(me) && Inventory.contains(12011) && Inventory.isFull()) {
                 Log.info("should deposit the dirt");
                 SceneObject hepper = SceneObjects.getNearest("Hopper");
 
@@ -158,9 +161,23 @@ public class Main extends Script {
                     ++depositCount;
                 }
 
-
             }
-
+            if (brokenStrut != null && !Inventory.contains(12011) && nmDirtInDeposit.getTextColor() == 16711680) {
+                Log.info("should take hemmer");
+                SceneObject crate = SceneObjects.getNearest("Crate");
+                crate.interact("Search");
+                Time.sleepUntil(() -> Inventory.contains("Hammer"), 4000);
+                if (Inventory.contains("Hammer") && brokenStrut != null) {
+                    Log.info("should fix");
+                    brokenStrut.interact("Hammer");
+                    Time.sleepUntil(() -> (brokenStrut == null), 3500);
+                } else {
+                    for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
+                        hammer.interact("Drop");
+                        Time.sleep(300);
+                    }
+                }
+            }
 
 
         }

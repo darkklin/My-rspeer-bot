@@ -1,9 +1,13 @@
 package woodcutting.task;
 
 import org.rspeer.runetek.adapter.component.Item;
+import org.rspeer.runetek.adapter.scene.Player;
 import org.rspeer.runetek.adapter.scene.SceneObject;
+import org.rspeer.runetek.api.commons.Time;
+import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.Bank;
 import org.rspeer.runetek.api.component.tab.Inventory;
+import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.runetek.api.scene.SceneObjects;
 import org.rspeer.script.task.Task;
@@ -18,22 +22,29 @@ public class Banking extends Task {
 
     @Override
     public boolean validate() {
-        return (WuCutting.tree != null && WuCutting.location != null) && Inventory.isFull() && WuCutting.location.getBankArea().contains(Players.getLocal());
+        return (WuCutting.tree != null && WuCutting.location != null) && Inventory.isFull();
     }
 
     @Override
     public int execute() {
-        if (Bank.isOpen()) {
-            System.out.println("The bank is open ");
 
-            Bank.depositAllExcept(AXE_PREDICATE);
-        } else{
-            System.out.println("Opening bank");
-            System.out.println("Deposit");
-            Bank.open();
-            Bank.depositAllExcept(AXE_PREDICATE);
+        final SceneObject bankChest = SceneObjects.getNearest("Bank Chest");
+        Movement.walkTo(bankChest);
+        Time.sleepUntil(() -> Players.getLocal().getPosition().equals(bankChest), Random.nextInt(2000, 4000));
+        bankChest.interact("Use");
+        Time.sleepUntil(() -> Bank.isOpen(), Random.nextInt(2500, 5600));
+        if (Bank.isOpen()) {
+            Time.sleep(1000, 1700);
+
+            Bank.depositInventory();
+            Time.sleep(1000);
+
+            Bank.close();
+            Time.sleep(500, 1000);
+
 
         }
+
         return 0;
     }
 }

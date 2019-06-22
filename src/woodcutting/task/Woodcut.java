@@ -2,6 +2,7 @@ package woodcutting.task;
 
 import org.rspeer.runetek.adapter.scene.SceneObject;
 import org.rspeer.runetek.api.commons.Time;
+import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.runetek.api.scene.SceneObjects;
@@ -32,6 +33,6 @@ public class Woodcut extends Task {
 
 
         }
-        return 300;
+        return Random.nextInt(300,1000);
     }
 }

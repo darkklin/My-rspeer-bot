@@ -5,17 +5,21 @@ import org.rspeer.runetek.api.component.tab.Skills;
 
 public enum Tree {
 
-    REGULAR("Tree","Logs",1),
-    OAK("Oak","Oak Logs",15),
-    WILLOW("Willow","Willow logs",30);
+    REGULAR("Tree","Logs",1,0),
+    OAK("Oak","Oak Logs",15,0),
+    WILLOW("Willow","Willow logs",30,67),
+    YEW("Yew","Yew logs",60,175);
+
 
     private final String name, logName;
     private final int requiredLevel;
+    private int experience;
 
-    Tree(final String name, final String logName, final int requiredLevel) {
+    Tree(final String name, final String logName, final int requiredLevel,int experience) {
         this.name = name;
         this.logName = logName;
         this.requiredLevel = requiredLevel;
+        this.experience = experience;
 
 
     }
@@ -26,6 +30,9 @@ public enum Tree {
 
     public String getLogName() {
         return logName;
+    }
+    public int getExperience() {
+        return experience;
     }
 
     public int getRequiredLevel() {
