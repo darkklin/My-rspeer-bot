@@ -14,8 +14,8 @@ public class Traverse extends Task {
     public boolean validate() {
         System.out.println("traverseToTrees");
 
-//        return Inventory.isFull() && !WuCutting.location.equals((Location.POWERCUT));
-        return (WuCutting.tree != null && WuCutting.location != null) && traverseToBank() || traverseToTrees() ;
+       return Inventory.isFull() && !WuCutting.location.equals((Location.POWERCUT));
+//        return (WuCutting.tree != null && WuCutting.location != null) && traverseToBank() || traverseToTrees() ;
     }
 
     @Override

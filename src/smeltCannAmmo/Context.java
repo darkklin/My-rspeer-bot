@@ -1,4 +1,4 @@
-package motherlodeMine;
+package smeltCannAmmo;
 
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.ui.Log;
@@ -7,16 +7,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Context {
     private static int toggleNextRun = 20;
-
-    private static boolean isMining = false;
-
-    public static boolean isMining() {
-        return isMining;
-    }
-
-    public static void setMining(boolean mining) {
-        isMining = mining;
-    }
 
     public static void checkRunEnergy(){
         if(Movement.getRunEnergy() > toggleNextRun && !Movement.isRunEnabled()){

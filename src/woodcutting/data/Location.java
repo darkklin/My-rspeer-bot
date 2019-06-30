@@ -4,12 +4,14 @@ import org.rspeer.runetek.api.movement.position.Area;
 import org.rspeer.runetek.api.movement.position.Position;
 
 public enum Location {
-    POWERCUT(null,null,Tree.values()),
-    DRAYNOR(Area.rectangular(new Position(3097,3246,0),new Position(3092,3240,0)),
-    (Area.rectangular(3100, 3233, 3110, 3225,0)),
+    POWERCUT(Area.rectangular(1593, 3480, 1589, 3475),Area.rectangular(1599, 3501, 1583, 3481),Tree.values()),
 
 
-    Tree.REGULAR);
+    DRAYNOR(Area.rectangular(new Position(1591,3477,0),new Position(1599,3497,0)),
+    (Area.rectangular(1599, 3497, 3110, 1583,0)),
+
+
+    Tree.YEW);
 
 
     private final Area bankArea, treeArea;

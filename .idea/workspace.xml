@@ -2,18 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd22f448-8dc0-4e3f-b4ed-7a22a2adb35f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/powerlevelMining/JMiner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/powerlevelMining/base/Context.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/powerlevelMining/base/tasks/MineRock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/powerlevelMining/base/tasks/PowerDrop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/powerlevelMining/util/AreaUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/powerlevelMining/util/InventoryUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/powerlevelMining/util/MiscUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/powerlevelMining/util/rocks/Rock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/powerlevelMining/util/rocks/RockHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/miningPower/JMiner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/miningPower/base/Context.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/miningPower/base/tasks/MineRock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/miningPower/base/tasks/PowerDrop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/miningPower/util/AreaUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/miningPower/util/InventoryUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/miningPower/util/MiscUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/miningPower/util/rocks/Rock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/miningPower/util/rocks/RockHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/smeltCannAmmo/Context.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/smeltCannAmmo/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/smlting/Context.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/smlting/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/woodcutting/base/Context.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/woodcutting/base/MiscUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/My RSPeer bot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/My RSPeer bot.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RangeAttack/RangeAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RangeAttack/RangeAttack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/miningGuildMember/base/tasks/MineRock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/miningGuildMember/base/tasks/MineRock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/motherlodeMine/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/motherlodeMine/Context.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/motherlodeMine/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/motherlodeMine/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/woodcutting/WuCutting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/woodcutting/WuCutting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/woodcutting/data/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/woodcutting/data/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/woodcutting/data/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/woodcutting/data/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/woodcutting/task/Banking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/woodcutting/task/Banking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/woodcutting/task/Drop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/woodcutting/task/Drop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/woodcutting/task/Traverse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/woodcutting/task/Traverse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/woodcutting/task/Woodcut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/woodcutting/task/Woodcut.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,29 +46,65 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/miningGuildMember/JMiner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="75" selection-start-line="30" selection-start-column="75" selection-end-line="30" selection-end-column="75" />
+            <state relative-caret-position="408">
+              <caret line="36" column="46" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/miningGuildMember/base/tasks/PowerDrop.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/miningGuildMember/base/tasks/MineRock.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/miningGuildMember/util/MiscUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/powerlevelMining/base/tasks/MineRock.java">
+        <entry file="file://$PROJECT_DIR$/src/motherlodeMine/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+            <state relative-caret-position="385">
+              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/powerlevelMining/JMiner.java">
+        <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Combat.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+            <state relative-caret-position="299">
+              <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/motherlodeMine/Context.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,47 +113,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/powerlevelMining/util/rocks/RockHandler.java">
+        <entry file="file://$PROJECT_DIR$/src/smlting/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="136">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="31" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/powerlevelMining/base/tasks/PowerDrop.java">
+        <entry file="file://$PROJECT_DIR$/src/smeltCannAmmo/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="57" column="65" lean-forward="true" selection-start-line="57" selection-start-column="65" selection-end-line="57" selection-end-column="65" />
+            <state relative-caret-position="204">
+              <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/smeltCannAmmo/Context.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-end-line="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/powerlevelMining/base/Context.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/powerlevelMining/util/AreaUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="24" selection-start-column="8" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/My RSPeer bot.iml">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -115,40 +153,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Movement.setWalkFlag(BANK_AREA.getCenter());</find>
-      <find>Attempting</find>
-      <find>inv</find>
-      <find>floorLevel</find>
-      <find>up</find>
-      <find>run</find>
-      <find>toggleNextRun</find>
-      <find>Walking to bank..</find>
-      <find>BANK_AREA</find>
-      <find>dow</find>
-      <find>bank</find>
-      <find>walking</find>
-      <find>walking to ba</find>
-      <find>setMining</find>
-      <find>price</find>
-      <find>walking to</find>
-      <find>gate</find>
-      <find>action</find>
-      <find>totalHides</find>
-      <find>cowhide</find>
-      <find>TO BANK</find>
-      <find>ATTEM</find>
-      <find>checkRunEnergy</find>
-      <find>incrementOreMined</find>
-      <find>getValidRock</find>
-      <find>Context</find>
-      <find>isMining</find>
-      <find>fallRockPosition</find>
-      <find>depositCount</find>
+      <find>v</find>
+      <find>isDead</find>
       <find>should go to</find>
+      <find>DEPOSIT</find>
+      <find>depositCount</find>
     </findStrings>
-    <replaceStrings>
-      <replace>ATTACK</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -156,42 +166,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/miningGuild/base/Context.java" />
         <option value="$PROJECT_DIR$/src/RangeAttack/Experience.java" />
         <option value="$PROJECT_DIR$/src/RangeAttack/Foodtype.java" />
-        <option value="$PROJECT_DIR$/My RSPeer bot.iml" />
-        <option value="$PROJECT_DIR$/src/miningGuild/util/rocks/Rock.java" />
-        <option value="$PROJECT_DIR$/src/killCowTakeHide/BoneLooter.java" />
-        <option value="$PROJECT_DIR$/src/miningGuildMember/util/AreaUtil.java" />
-        <option value="$PROJECT_DIR$/src/miningGuild/base/Context.java" />
-        <option value="$PROJECT_DIR$/src/miningGuild/base/tasks/MineRock.java" />
         <option value="$PROJECT_DIR$/src/miningGuild/base/tasks/PowerDrop.java" />
-        <option value="$PROJECT_DIR$/src/miningGuild/JMiner.java" />
-        <option value="$PROJECT_DIR$/src/miningGuild/util/rocks/RockHandler.java" />
-        <option value="$PROJECT_DIR$/src/miningGuildMember/util/rocks/RockHandler.java" />
-        <option value="$PROJECT_DIR$/src/miningGuildMember/JMiner.java" />
-        <option value="$PROJECT_DIR$/src/motherlodeMine/data/Location.java" />
-        <option value="$PROJECT_DIR$/src/miningGuildMember/base/Context.java" />
-        <option value="$PROJECT_DIR$/src/miningGuildMember/base/tasks/PowerDrop.java" />
-        <option value="$PROJECT_DIR$/src/motherlodeMine/Context.java" />
-        <option value="$PROJECT_DIR$/src/motherlodeMine/Main.java" />
         <option value="$PROJECT_DIR$/src/RangeAttack/RangeAttack.java" />
-        <option value="$PROJECT_DIR$/src/defender/main.java" />
+        <option value="$PROJECT_DIR$/src/smeltCannAmmo/Context.java" />
+        <option value="$PROJECT_DIR$/src/smeltCannAmmo/Main.java" />
+        <option value="$PROJECT_DIR$/src/motherlodeMine/Context.java" />
         <option value="$PROJECT_DIR$/src/miningGuildMember/base/tasks/MineRock.java" />
-        <option value="$PROJECT_DIR$/miningGuildMemberPowerMining/util/rocks/RockHandler.java" />
-        <option value="$PROJECT_DIR$/miningGuildMemberPowerMining/util/AreaUtil.java" />
-        <option value="$PROJECT_DIR$/miningGuildMemberPowerMining/util/InventoryUtil.java" />
-        <option value="$PROJECT_DIR$/miningGuildMemberPowerMining/util/MiscUtil.java" />
-        <option value="$PROJECT_DIR$/miningGuildMemberPowerMining/JMiner.java" />
-        <option value="$PROJECT_DIR$/miningGuildMemberPowerMining/base/tasks/MineRock.java" />
-        <option value="$PROJECT_DIR$/miningGuildMemberPowerMining/base/tasks/PowerDrop.java" />
-        <option value="$PROJECT_DIR$/miningGuildMemberPowerMining/base/Context.java" />
-        <option value="$PROJECT_DIR$/miningGuildMemberPowerMining/util/rocks/Rock.java" />
-        <option value="$PROJECT_DIR$/src/miningGuildMemberPowerMining/JMiner.java" />
-        <option value="$PROJECT_DIR$/src/powerlevelMining/util/AreaUtil.java" />
-        <option value="$PROJECT_DIR$/src/powerlevelMining/JMiner.java" />
-        <option value="$PROJECT_DIR$/src/powerlevelMining/util/rocks/RockHandler.java" />
-        <option value="$PROJECT_DIR$/src/powerlevelMining/base/tasks/PowerDrop.java" />
-        <option value="$PROJECT_DIR$/src/powerlevelMining/base/tasks/MineRock.java" />
+        <option value="$PROJECT_DIR$/src/miningGuildMember/JMiner.java" />
+        <option value="$PROJECT_DIR$/src/motherlodeMine/Main.java" />
       </list>
     </option>
   </component>
@@ -208,6 +193,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -224,61 +210,29 @@
               <item name="My RSPeer bot" type="b2602c69:ProjectViewProjectNode" />
               <item name="My RSPeer bot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="powerlevelMining" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="My RSPeer bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="My RSPeer bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="powerlevelMining" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="My RSPeer bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="My RSPeer bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="powerlevelMining" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-              <item name="tasks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="My RSPeer bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="My RSPeer bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="powerlevelMining" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="motherlodeMine" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.EditorConfig" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\kiril\IdeaProjects\My RSPeer bot\src" />
-      <recent name="C:\Users\kiril\IdeaProjects\My RSPeer bot" />
-      <recent name="C:\Users\kiril\IdeaProjects\My RSPeer bot\src\motherlodeMine" />
-      <recent name="C:\Users\kirill\IdeaProjects\My-rspeer-bot\src\miningGuild\base\tasks" />
-      <recent name="C:\Users\kirill\IdeaProjects\My-rspeer-bot\src\miningGuildMember" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="miningGuildMember.base.tasks" />
-      <recent name="miningGuildMember" />
+      <recent name="smeltCannAmmo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\kiril\IdeaProjects\My RSPeer bot\src" />
@@ -328,18 +282,18 @@
       <updated>1559462690901</updated>
       <workItem from="1559462694014" duration="17408000" />
     </task>
-    <task id="LOCAL-00001" summary="...">
-      <created>1559600384146</created>
+    <task id="LOCAL-00001" summary="new features">
+      <created>1559578871335</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1559600384146</updated>
+      <updated>1559578871335</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100157000" />
+    <option name="totallyTimeSpent" value="35335000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -352,29 +306,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.123667374" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12686567" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Duplicates" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.115926325" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.12134345" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.07938258" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.08017335" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3296582" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3296582" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.22535211" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.13217768" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -390,40 +342,71 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="..." />
-    <option name="LAST_COMMIT_MESSAGE" value="..." />
+    <MESSAGE value="new features" />
+    <option name="LAST_COMMIT_MESSAGE" value="new features" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/script/ScriptBlockingEvent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuildMember/util/MiscUtil.java">
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/event/types/SkillEvent.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/motherlodeMine/data/Location.java" />
-    <entry file="file://$PROJECT_DIR$/src/motherlodeMine/data/Tree.java" />
-    <entry file="file://$PROJECT_DIR$/src/miningGuildMember/util/InventoryUtil.java">
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Skill.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        <state relative-caret-position="238">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RangeAttack/Experience.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lamerton/troy/tanner/Main.java">
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/event/listeners/RenderListener.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
-          <caret line="120" column="35" selection-start-line="120" selection-start-column="35" selection-end-line="120" selection-end-column="35" />
+        <state relative-caret-position="102">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/commons/StopWatch.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding>
+            <element signature="e#1761#1762#0" expanded="true" />
+            <element signature="e#1803#1804#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/adapter/Positionable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
+          <folding>
+            <element signature="e#1381#1382#0" expanded="true" />
+            <element signature="e#1433#1434#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/woodcutting/data/Tree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+          <folding>
+            <element signature="e#545#546#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -434,132 +417,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/script/task/Task.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuildMember/base/Context.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="72" column="70" selection-start-line="72" selection-start-column="70" selection-end-line="72" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1691#1692#0" expanded="true" />
-            <element signature="e#1722#1723#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/adapter/scene/SceneObject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="111" column="19" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuild/base/Context.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1087#1088#0" expanded="true" />
-            <element signature="e#1126#1127#0" expanded="true" />
-            <element signature="e#1165#1166#0" expanded="true" />
-            <element signature="e#1196#1197#0" expanded="true" />
-            <element signature="e#1628#1629#0" expanded="true" />
-            <element signature="e#1659#1660#0" expanded="true" />
-            <element signature="e#1711#1712#0" expanded="true" />
-            <element signature="e#1744#1745#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/motherlodeMine/Context.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="32" />
-          <folding>
-            <element signature="e#94#95#0" expanded="true" />
-            <element signature="e#125#126#0" expanded="true" />
-            <element signature="e#177#178#0" expanded="true" />
-            <element signature="e#210#211#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuild/JMiner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuild/base/tasks/PowerDrop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuild/base/tasks/MineRock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="66" column="47" selection-start-line="66" selection-start-column="47" selection-end-line="66" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/killCowTakeHide/BoneLooter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-553">
-          <caret line="99" column="44" lean-forward="true" selection-start-line="99" selection-start-column="44" selection-end-line="99" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuild/util/InventoryUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuild/util/AreaUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/woodcutting/WuCutting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/woodcutting/task/Traverse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="67" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/woodcutting/task/Drop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/woodcutting/task/Banking.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -567,248 +424,254 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Inventory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="423" column="22" selection-start-line="423" selection-start-column="22" selection-end-line="423" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/Interfaces.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="182" column="37" selection-start-line="182" selection-start-column="37" selection-end-line="182" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/adapter/component/InterfaceComponent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="483" column="15" selection-start-line="483" selection-start-column="15" selection-end-line="483" selection-end-column="15" />
-          <folding>
-            <element signature="e#16183#16184#0" expanded="true" />
-            <element signature="e#16258#16259#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/woodcutting/task/Woodcut.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="41" lean-forward="true" selection-start-line="26" selection-end-line="27" />
+        <state relative-caret-position="459">
+          <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/motherlodeMine/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/woodcutting/data/Location.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="35" column="23" lean-forward="true" selection-start-line="35" selection-end-line="36" />
+        <state relative-caret-position="85">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/woodcutting/task/Traverse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="30" column="143" lean-forward="true" selection-start-line="30" selection-start-column="143" selection-end-line="30" selection-end-column="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/miningGuild/base/tasks/MineRock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/miningGuild/util/rocks/Rock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/miningGuild/util/rocks/RockHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/miningGuild/base/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+          <folding>
+            <element signature="e#1232#1233#0" expanded="true" />
+            <element signature="e#1271#1272#0" expanded="true" />
+            <element signature="e#1514#1515#0" expanded="true" />
+            <element signature="e#1575#1576#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/miningGuild/JMiner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/defender/main.java">
+    <entry file="file://$PROJECT_DIR$/src/RangeAttack/Foodtype.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="53" column="39" lean-forward="true" selection-start-line="53" selection-start-column="39" selection-end-line="53" selection-end-column="39" />
+        <state relative-caret-position="780">
+          <caret line="54" column="18" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
+            <element signature="e#254#255#0" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/woodcutting/task/Drop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/miningGuild/util/InventoryUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+          <folding>
+            <element signature="e#868#869#0" expanded="true" />
+            <element signature="e#921#922#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/miningGuild/base/tasks/PowerDrop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="92" selection-start-line="92" selection-end-line="94" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RangeAttack/RangeAttack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="62" column="15" selection-start-line="62" selection-start-column="15" selection-end-line="62" selection-end-column="15" />
+        <state relative-caret-position="426">
+          <caret line="136" column="57" lean-forward="true" selection-start-line="136" selection-start-column="57" selection-end-line="136" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuildMember/util/rocks/Rock.java">
+    <entry file="file://$PROJECT_DIR$/src/miningPower/JMiner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        <state relative-caret-position="187">
+          <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="33" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/woodcutting/base/MiscUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/woodcutting/base/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="37" column="5" selection-start-line="5" selection-start-column="2" selection-end-line="37" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/miningGuildMember/util/rocks/RockHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/miningGuildMember/base/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="47" column="48" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/adapter/scene/Player.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="38" column="15" selection-start-line="38" selection-start-column="15" selection-end-line="38" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/woodcutting/WuCutting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/smlting/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Combat.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/smeltCannAmmo/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/motherlodeMine/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/smlting/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="31" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/miningGuildMember/base/tasks/PowerDrop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="33" column="37" lean-forward="true" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuildMember/util/rocks/RockHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/miningGuildMember/base/tasks/MineRock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="357">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/miningGuildMemberPowerMining/util/MiscUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="36" selection-start-column="36" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miningGuildMemberPowerMining/util/rocks/Rock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="36" selection-start-column="36" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miningGuildMemberPowerMining/util/rocks/RockHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="36" selection-start-column="36" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miningGuildMemberPowerMining/util/AreaUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="36" selection-start-column="36" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miningGuildMemberPowerMining/util/InventoryUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="36" selection-start-column="36" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miningGuildMemberPowerMining/base/tasks/PowerDrop.java">
+    <entry file="file://$PROJECT_DIR$/src/miningGuildMember/util/MiscUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miningGuildMemberPowerMining/base/tasks/MineRock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/miningGuildMember/util/AreaUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/miningGuildMember/JMiner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="75" selection-start-line="30" selection-start-column="75" selection-end-line="30" selection-end-column="75" />
+        <state relative-caret-position="408">
+          <caret line="36" column="46" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/miningGuildMemberPowerMining/base/Context.java">
+    <entry file="file://$PROJECT_DIR$/src/smeltCannAmmo/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+        <state relative-caret-position="204">
+          <caret line="31" column="26" lean-forward="true" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/My RSPeer bot.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/miningGuildMemberPowerMining/JMiner.java">
+    <entry file="file://$PROJECT_DIR$/src/motherlodeMine/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="14" column="56" lean-forward="true" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/powerlevelMining/util/AreaUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/powerlevelMining/JMiner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/powerlevelMining/util/rocks/RockHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/powerlevelMining/base/Context.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/powerlevelMining/base/tasks/PowerDrop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="57" column="65" lean-forward="true" selection-start-line="57" selection-start-column="65" selection-end-line="57" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/powerlevelMining/base/tasks/MineRock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+        <state relative-caret-position="385">
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
         </state>
       </provider>
     </entry>
