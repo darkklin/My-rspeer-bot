@@ -70,14 +70,7 @@ public class Main extends Script {
         }
 
 
-//        if (brokenStrut != null && Inventory.contains(2347)) {
-//
-//            for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
-//                hammer.interact("Drop");
-//                Time.sleep(300);
-//            }
-//
-//        }
+
         if (nmDirtInDeposit.getTextColor() == 16711680) {
 
             Log.info("test this while");
@@ -115,13 +108,12 @@ public class Main extends Script {
                         Log.info("We have special attack. Using special attack...");
                         Combat.toggleSpecial(true);
                         Time.sleepUntil(() -> Combat.getSpecialEnergy() < 100, 1000);
-
-
-                        if (Inventory.contains(2347)) {
-                            for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
-                                hammer.interact("Drop");
-                                Time.sleep(300);
-                            }
+                    }
+                    if (Inventory.contains(2347)) {
+                        Time.sleep(300);
+                        for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
+                            hammer.interact("Drop");
+                            Time.sleep(300);
                         }
                     }
                 }
@@ -131,7 +123,7 @@ public class Main extends Script {
         else{
             if (!ORE_VEIN_AREATWO.contains(oreVein)) {
                 Movement.walkTo(ladderDown.getPosition());
-                Time.sleepUntil(() -> ladderDown.getPosition() == me.getPosition(), 2500);
+                Time.sleepUntil(() -> ladderDown.getPosition() == me.getPosition(), 6000);
             }
         }
 
@@ -150,8 +142,10 @@ public class Main extends Script {
                 SceneObject hepper = SceneObjects.getNearest("Hopper");
                 hepper.interact("Deposit");
                 Time.sleepUntil(() -> !Inventory.containsAll(12011), 2500);
-                if (nmDirt > 50) {
-                    Time.sleep(800, 1500);
+                if (nmDirt > 50&&brokenStrut == null) {
+                    Log.info("should wait 2 secont");
+                    Time.sleepUntil(()->(Integer.parseInt(nmDirtInDeposit.getText()) >70),10000);
+                    Time.sleep(200,600);
                 }
 
                 if (brokenStrut != null && !Inventory.contains(12011) && depositArea.contains(me) || WHILS_aREA.contains(me)) {
@@ -168,16 +162,11 @@ public class Main extends Script {
                     if (Inventory.contains("Hammer") && brokenStrut != null) {
                         boolean isbroken = true;
 
-                        while (isbroken) {
+
                             Log.info("should fix");
                             brokenStrut.interact("Hammer");
                             Log.info(brokenStrut == null);
-                            Time.sleepUntil(() -> (brokenStrut == null), 6000);
-                            if (brokenStrut == null) {
-                                Log.info("fixed");
-                                isbroken = true;
-                            }
-                        }
+                            Time.sleepUntil(() -> (brokenStrut == null), 10000);
 
 
                     }
@@ -188,6 +177,11 @@ public class Main extends Script {
 
         }
         if (depositArea.contains(me) || WHILS_aREA.contains(me) && brokenStrut == null) {
+
+            if (!Inventory.isEmpty())
+            {
+                depositBank();
+            }
             Log.info("should go up ");
             ladderUp.interact("Climb");
             Time.sleep(700, 1000);
@@ -195,7 +189,7 @@ public class Main extends Script {
 
         InterfaceComponent steel = Interfaces.getComponent(193, 2);
 
-
+        Log.info((brokenStrut != null)+"<<<<<<<<<<<<<<<<");
         return 0;
 
     }
