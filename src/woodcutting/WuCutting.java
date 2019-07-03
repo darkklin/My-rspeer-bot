@@ -50,7 +50,6 @@ public class WuCutting extends TaskScript  implements RenderListener, SkillListe
 
         g2.drawString("Runtime: " + MiscUtil.formatRuntime(Context.getRunTime() / 1000), x, y += 20);
         g2.drawString("Log cu: " + Context.getLogCutted(), x, y += 20);
-
         g2.drawString("Experience gained: " + Context.getExperienceGained(), x, y += 20);
         g2.drawString("Exp/hr: " + Context.getExperiencePerHour(), x, y += 20);
     }

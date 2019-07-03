@@ -52,18 +52,18 @@ public class RangeAttack extends Script implements RenderListener {
         time = StopWatch.start();
 
         startTime = System.currentTimeMillis();
-        startXp = Skills.getExperience(Skill.STRENGTH);
-        startLvl = Skills.getLevel(Skill.STRENGTH);
+        startXp = Skills.getExperience(Skill.ATTACK);
+        startLvl = Skills.getLevel(Skill.ATTACK);
 
     }
 //&& (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0)
     @Override
     public int loop() {
         Player me = Players.getLocal();
-        Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().contains("mount") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
+        Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().contains("pyre") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
         Pickable groundBones = Pickables.getNearest(x -> x.getName().replaceAll(" ","").toLowerCase().contains("big") && x.distance(me) < 20 && x.distance(enemy) < 20);
 
-        Pickable groudArrow = Pickables.getNearest(x -> x.getName().toLowerCase().contains("iron arrow") && x.distance(me) < 20 && x.distance(enemy) < 20);
+        Pickable groudArrow = Pickables.getNearest(x -> x.getName().toLowerCase().contains("rune") && x.distance(me) < 20 && x.distance(enemy) < 20);
         Item invBones = Inventory.getLast("Big bones");
         Item invArrow = Inventory.getFirst("Iron arrow");
 
@@ -176,11 +176,11 @@ public class RangeAttack extends Script implements RenderListener {
 
         final long upTime = System.currentTimeMillis() - startTime;
         g.drawString("Runtime: " + time.toElapsedString(), 5, 270);
-        g.drawString("Current Level: " + Skills.getLevel(Skill.STRENGTH) + ("(" + experience.gainedLvl(Skill.STRENGTH, startLvl) + ")"), 5, 280);
-        g.drawString("XP Gained: " + experience.gainedXp(Skill.STRENGTH, startXp), 5, 295);
-        g.drawString("XP To Level: " + experience.xpToLvl(Skill.STRENGTH), 5, 310);
-        g.drawString("XP/HR: " + experience.xpHour(Skill.STRENGTH, startXp, upTime), 5, 325);
-        g.drawString("% To Level: " + experience.percentToLvl(Skill.STRENGTH), 5, 340);
+        g.drawString("Current Level: " + Skills.getLevel(Skill.ATTACK) + ("(" + experience.gainedLvl(Skill.ATTACK, startLvl) + ")"), 5, 280);
+        g.drawString("XP Gained: " + experience.gainedXp(Skill.ATTACK, startXp), 5, 295);
+        g.drawString("XP To Level: " + experience.xpToLvl(Skill.ATTACK), 5, 310);
+        g.drawString("XP/HR: " + experience.xpHour(Skill.ATTACK, startXp, upTime), 5, 325);
+        g.drawString("% To Level: " + experience.percentToLvl(Skill.ATTACK), 5, 340);
 
     }
 
