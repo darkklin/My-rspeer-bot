@@ -56,6 +56,7 @@ public class Main extends Script {
     public int loop() {
         final SceneObject oreVein = SceneObjects.getNearest(x -> x.getName().contains("Ore vein") && x.getY() != 5678 && x.getY() != 5679 && x.getY() != 5676 && x.getY() != 5680 && x.getY() != 5675 && x.getY() != 5683 && x.getY() != 5682 && x.getY() != 5682 && x.getY() != 5686 && x.getY() != 5681 && x.getY() != 5684 && x.getY() != 5685);
         SceneObject brokenStrut = SceneObjects.getNearest(x -> x.getName().contains("Broken strut") && x.getY() == 5669);
+
         SceneObject ladderDown = SceneObjects.getNearest(x -> x.getId() == 19045 && x.getY() == 5674);
         SceneObject ladderUp = SceneObjects.getNearest(x -> x.getId() == 19044 && x.getY() == 5673);
 
@@ -77,8 +78,10 @@ public class Main extends Script {
                 SceneObject sack = SceneObjects.getNearest("Sack");
                 sack.interact("search");
                 Time.sleepUntil(() -> (Inventory.getCount() > 1), 8000);
+                countOra();
 
-                if (Inventory.contains(444,447,451,453,449)) {
+
+                if (Inventory.contains(444, 447, 451, 453, 449)) {
                     depositBank();
                 }
 
@@ -88,7 +91,7 @@ public class Main extends Script {
 
 
         }
-        if (ORE_VEIN_AREATWO.contains(oreVein) && !Inventory.isFull() && ORE_VEIN_AREATWO.contains(me) && nmDirtInDeposit.getTextColor() != 16711680 ) {
+        if (ORE_VEIN_AREATWO.contains(oreVein) && !Inventory.isFull() && ORE_VEIN_AREATWO.contains(me) && nmDirtInDeposit.getTextColor() != 16711680) {
             Log.info(ORE_VEIN_AREATWO.contains(oreVein));
             if (oreVein != null) {
                 Log.info("should mining dirt ");
@@ -131,17 +134,18 @@ public class Main extends Script {
             Log.info("Climb down ");
             ladderDown.interact("Climb");
             Time.sleepUntil(() -> depositArea.contains(me), 4000);
-            Time.sleepUntil(()->depositArea.contains(me),3500);
+            Time.sleepUntil(() -> depositArea.contains(me), 3500);
         }
 
         if (depositArea.contains(me) && Inventory.contains(12011) && Inventory.isFull()) {
             Log.info("should deposit the dirt");
             SceneObject hepper = SceneObjects.getNearest("Hopper");
+
             hepper.interact("Deposit");
-            Time.sleepUntil(() -> !Inventory.containsAll(12011), 2500);
+            Time.sleepUntil(() -> !Inventory.containsAll(12011), 6500);
             if (nmDirt > 50 && brokenStrut == null) {
                 Log.info("should wait 2 secont");
-                Time.sleepUntil(() -> (Integer.parseInt(nmDirtInDeposit.getText()) > 70), 10000);
+                Time.sleepUntil(() -> (nmDirtInDeposit.getTextColor() == 16711680), 10000);
                 Time.sleep(200, 600);
             }
 
@@ -152,45 +156,43 @@ public class Main extends Script {
                 while (!Inventory.contains("Hammer")) {
                     crate.interact("Search");
                     Time.sleepUntil(() -> Inventory.contains("Hammer"), 8000);
-
-
                 }
 
                 if (Inventory.contains("Hammer") && brokenStrut != null) {
-                    boolean isbroken = true;
 
-
-                    Log.info("should fix");
+                    Log.info("should fix the broken strut");
                     brokenStrut.interact("Hammer");
                     Log.info(brokenStrut == null);
                     Time.sleepUntil(() -> (brokenStrut == null), 10000);
 
-                    if (Inventory.contains(2347)&& brokenStrut ==null) {
-                        Time.sleep(300);
-                        for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
-                            hammer.interact("Drop");
-                            Time.sleepUntil(()->!Inventory.contains("Hammer"),2500);
-                        }
+
+                }
+                if (Inventory.contains(2347) && brokenStrut == null) {
+                    Log.info("should drop the Hammer");
+                    for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
+                        Time.sleep(600);
+                        hammer.interact("Drop");
+                        Time.sleepUntil(() -> !Inventory.contains("Hammer"), 2500);
                     }
-
-
                 }
 
             }
 
 
         }
-        if (depositArea.contains(me) || WHILS_aREA.contains(me) && brokenStrut == null  && nmDirtInDeposit.getTextColor() != 16711680 ) {
+        if (depositArea.contains(me) || WHILS_aREA.contains(me) && brokenStrut == null) {
 
             if (!Inventory.isEmpty() && !Inventory.contains(12011)) {
+
                 depositBank();
             }
-            Log.info("should go up ");
-            ladderUp.interact("Climb");
-            Time.sleepUntil(()->ORE_VEIN_AREATWO.contains(me),3500);
+            if (nmDirtInDeposit.getTextColor() != 16711680) {
+                Log.info("should go up ");
+                ladderUp.interact("Climb");
+                Time.sleepUntil(() -> ORE_VEIN_AREATWO.contains(me), 3500);
+            }
         }
 
-        InterfaceComponent steel = Interfaces.getComponent(193, 2);
 
         Log.info((brokenStrut != null) + "<<<<<<<<<<<<<<<<");
         return 0;
@@ -205,13 +207,37 @@ public class Main extends Script {
         Time.sleepUntil(() -> Bank.isOpen(), Random.nextInt(2500, 5600));
         if (Bank.isOpen()) {
             Time.sleep(1000, 1700);
-
             Bank.depositInventory();
             Time.sleep(1000);
-
             Bank.close();
             Time.sleep(500, 1000);
 
         }
+    }
+
+    int countRune = 0;
+    int countGold = 0;
+
+    int countCoal= 0;
+    int countAdam= 0;
+    int countMithril = 0;
+    public void countOra() {
+
+        int rune = Inventory.getCount(451);
+        int gold = Inventory.getCount(444);
+        int coal = Inventory.getCount(453);
+        int adam = Inventory.getCount(449);
+        int mithril = Inventory.getCount(447);
+
+
+
+        countRune = countRune + rune;
+        countGold = countGold + gold;
+        countCoal = countCoal + coal;
+        countAdam = countAdam + adam;
+        countMithril = countMithril + mithril;
+        Log.info("rune = " + countRune, "Gold = " + countGold + " Coal = " + countCoal + " ADAM = " + countAdam + " Mithril = " + countMithril);
+
+
     }
 }
