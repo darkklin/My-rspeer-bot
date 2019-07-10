@@ -54,16 +54,14 @@ public class Main extends Script {
 
     @Override
     public int loop() {
-        final SceneObject oreVein = SceneObjects.getNearest(x -> x.getName().contains("Ore vein") && x.getY() != 5678 && x.getY() != 5679 && x.getY() != 5676 && x.getY() != 5680 && x.getY() != 5675 && x.getY() != 5683 && x.getY() != 5682 && x.getY() != 5682 && x.getY() != 5686 && x.getY() != 5681 && x.getY() != 5684 && x.getY() != 5685);
+        final SceneObject oreVein = SceneObjects.getNearest(x -> x.getName().contains("Ore vein")  && x.getY() != 5679 && x.getY() != 5676   && x.getY() != 5683 && x.getY() != 5682 && x.getY() != 5682 && x.getY() != 5686 && x.getY() != 5681 && x.getY() != 5684 && x.getY() != 5685);
         SceneObject brokenStrut = SceneObjects.getNearest(x -> x.getName().contains("Broken strut") && x.getY() == 5669);
-
+        SceneObject brokenStrutTwo = SceneObjects.getNearest(x -> x.getName().contains("Broken strut"));
         SceneObject ladderDown = SceneObjects.getNearest(x -> x.getId() == 19045 && x.getY() == 5674);
         SceneObject ladderUp = SceneObjects.getNearest(x -> x.getId() == 19044 && x.getY() == 5673);
+        SceneObject rockFall = SceneObjects.getNearest(x -> x.getId() == 26679 && x.getX() == 3757);
 
-        SceneObject rockFallOne = SceneObjects.getNearest(x -> x.getId() == 26680 && x.getX() == 3731);
-        SceneObject rockFallTwo = SceneObjects.getNearest(x -> x.getId() == 26679 && x.getX() == 3733);
 
-        Position bankPosition = new Position(3759, 5666, 0);
         InterfaceComponent nmDirtInDeposit = Interfaces.getComponent(382, 4, 2);
         int nmDirt = Integer.parseInt(nmDirtInDeposit.getText());
         if (Movement.isDestinationSet()) {
@@ -71,7 +69,7 @@ public class Main extends Script {
         }
 
 
-        if (nmDirtInDeposit.getTextColor() == 16711680 && !ORE_VEIN_AREATWO.contains(me)) {
+        if (nmDirtInDeposit.getTextColor() == 16711680 || nmDirt >75 && !ORE_VEIN_AREATWO.contains(me)) {
 
             Log.info("test this while");
             while (nmDirt != 0) {
@@ -91,8 +89,20 @@ public class Main extends Script {
 
 
         }
+        if ( rockFall != null &&ORE_VEIN_AREATWO.contains(me))
+        {
+            Log.info(rockFall.distance());
+
+            if (rockFall.distance() == 1)
+            {
+                rockFall.interact("Mine");
+
+            }
+
+        }
         if (ORE_VEIN_AREATWO.contains(oreVein) && !Inventory.isFull() && ORE_VEIN_AREATWO.contains(me) && nmDirtInDeposit.getTextColor() != 16711680) {
             Log.info(ORE_VEIN_AREATWO.contains(oreVein));
+
             if (oreVein != null) {
                 Log.info("should mining dirt ");
                 Log.info(oreVein.getPosition());
@@ -167,7 +177,7 @@ public class Main extends Script {
 
 
                 }
-                if (Inventory.contains(2347) && brokenStrut == null) {
+                if (Inventory.contains("Hammer") && brokenStrut == null) {
                     Log.info("should drop the Hammer");
                     for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
                         Time.sleep(600);
@@ -186,7 +196,7 @@ public class Main extends Script {
 
                 depositBank();
             }
-            if (nmDirtInDeposit.getTextColor() != 16711680) {
+            if (nmDirtInDeposit.getTextColor() != 16711680 && nmDirt <75)  {
                 Log.info("should go up ");
                 ladderUp.interact("Climb");
                 Time.sleepUntil(() -> ORE_VEIN_AREATWO.contains(me), 3500);

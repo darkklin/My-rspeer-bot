@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd22f448-8dc0-4e3f-b4ed-7a22a2adb35f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/motherloderUPlevel/Context.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/motherloderUPlevel/Context.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/craftGlass/AGlassBlower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/magic/magicBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RangeAttack/RangeAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RangeAttack/RangeAttack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/motherloderUPlevel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/motherloderUPlevel/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,10 +21,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/miningGuildMember/JMiner.java">
+        <entry file="file://$PROJECT_DIR$/src/craftGlass/AGlassBlower.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="72" column="52" lean-forward="true" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
+            <state relative-caret-position="247">
+              <caret line="47" selection-start-line="47" selection-end-line="51" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -30,48 +33,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/miningGuildMember/base/Context.java">
+        <entry file="file://$PROJECT_DIR$/src/motherlodeMine/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="18" selection-start-column="90" selection-end-line="19" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1224#1225#0" expanded="true" />
-                <element signature="e#1255#1256#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/motherloderUPlevel/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="228" column="43" lean-forward="true" selection-start-line="228" selection-start-column="43" selection-end-line="228" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/motherloderUPlevel/Context.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Inventory.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="207" column="23" selection-start-line="207" selection-start-column="23" selection-end-line="207" selection-end-column="23" />
+            <state relative-caret-position="408">
+              <caret line="43" column="33" selection-start-line="43" selection-end-line="44" />
             </state>
           </provider>
         </entry>
@@ -79,8 +44,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RangeAttack/RangeAttack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
+            <state relative-caret-position="646">
+              <caret line="62" column="82" selection-start-line="62" selection-start-column="82" selection-end-line="62" selection-end-column="82" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/magic/magicBot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="75" column="34" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,10 +66,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Skills.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="96" column="22" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Magic.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="142" column="69" selection-start-line="142" selection-start-column="57" selection-end-line="142" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/smlting/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="36" column="37" lean-forward="true" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+            <state relative-caret-position="204">
+              <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-end-line="28" />
             </state>
           </provider>
         </entry>
@@ -109,8 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/woodcutting/WuCutting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="255">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -129,17 +124,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Attempting</find>
-      <find>inv</find>
-      <find>floorLevel</find>
-      <find>up</find>
-      <find>run</find>
       <find>toggleNextRun</find>
       <find>Walking to bank..</find>
       <find>BANK_AREA</find>
@@ -165,6 +156,11 @@
       <find>depositBank</find>
       <find>oreMined</find>
       <find>should go up</find>
+      <find>5686</find>
+      <find>5678</find>
+      <find>5680</find>
+      <find>ITEM_ON_ITEM</find>
+      <find>stopWatch</find>
     </findStrings>
     <replaceStrings>
       <replace>ATTACK</replace>
@@ -197,13 +193,16 @@
         <option value="$PROJECT_DIR$/src/lamerton/troy/tanner/tasks/TanHide.java" />
         <option value="$PROJECT_DIR$/src/lamerton/troy/tanner/tasks/BankLeatherWithdrawCowhide.java" />
         <option value="$PROJECT_DIR$/src/woodcutting/WuCutting.java" />
-        <option value="$PROJECT_DIR$/src/RangeAttack/RangeAttack.java" />
         <option value="$PROJECT_DIR$/src/motherloderUPlevel/Context.java" />
         <option value="$PROJECT_DIR$/src/motherloderUPlevel/Main.java" />
+        <option value="$PROJECT_DIR$/src/craftGlass/main.java" />
+        <option value="$PROJECT_DIR$/src/RangeAttack/RangeAttack.java" />
+        <option value="$PROJECT_DIR$/src/craftGlass/AGlassBlower.java" />
+        <option value="$PROJECT_DIR$/src/magic/magicBot.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="213" />
     <option name="y" value="180" />
     <option name="width" value="1400" />
@@ -216,41 +215,41 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="My RSPeer bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="My RSPeer bot" type="462c0819:PsiDirectoryNode" />
+              <item name="My-rspeer-bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="My-rspeer-bot" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="My RSPeer bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="My RSPeer bot" type="462c0819:PsiDirectoryNode" />
+              <item name="My-rspeer-bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="My-rspeer-bot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="My RSPeer bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="My RSPeer bot" type="462c0819:PsiDirectoryNode" />
+              <item name="My-rspeer-bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="My-rspeer-bot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="miningGuildMember" type="462c0819:PsiDirectoryNode" />
+              <item name="craftGlass" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="My RSPeer bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="My RSPeer bot" type="462c0819:PsiDirectoryNode" />
+              <item name="My-rspeer-bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="My-rspeer-bot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="motherloderUPlevel" type="462c0819:PsiDirectoryNode" />
+              <item name="magic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="My RSPeer bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="My RSPeer bot" type="462c0819:PsiDirectoryNode" />
+              <item name="My-rspeer-bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="My-rspeer-bot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="RangeAttack" type="462c0819:PsiDirectoryNode" />
+              <item name="smlting" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -347,9 +346,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12686567" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12837838" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -388,19 +388,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/tanner/tasks/WalkToTanner.java" />
-    <entry file="file://$PROJECT_DIR$/src/tanner/SimpleTannerGUI.jfd" />
-    <entry file="file://$PROJECT_DIR$/src/tanner/tasks/Conditions.java" />
-    <entry file="file://$PROJECT_DIR$/src/tanner/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/tanner/SimpleTannerGUI.java" />
-    <entry file="file://$PROJECT_DIR$/src/tanner/tasks/BankLeatherWithdrawCowhide.java" />
-    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/Interfaces.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/adapter/scene/PathingEntity.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
@@ -667,31 +654,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/motherlodeMine/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/movement/position/Area.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/woodcutting/data/Tree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/woodcutting/WuCutting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
@@ -702,41 +668,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Inventory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="207" column="23" selection-start-line="207" selection-start-column="23" selection-end-line="207" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/smlting/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="36" column="37" lean-forward="true" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RangeAttack/RangeAttack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/smlting/Context.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/miningGuildMember/JMiner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="72" column="52" lean-forward="true" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
+        <state relative-caret-position="867">
+          <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -745,8 +680,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/miningGuildMember/base/Context.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="18" selection-start-column="90" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="170">
+          <caret line="19" column="5" selection-start-line="18" selection-start-column="90" selection-end-line="19" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1224#1225#0" expanded="true" />
@@ -757,7 +692,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/motherloderUPlevel/Context.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
+        <state relative-caret-position="408">
           <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -765,10 +700,113 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Inventory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3400">
+          <caret line="207" column="23" selection-start-line="207" selection-start-column="23" selection-end-line="207" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/motherloderUPlevel/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="228" column="43" lean-forward="true" selection-start-line="228" selection-start-column="43" selection-end-line="228" selection-end-column="43" />
+        <state relative-caret-position="714">
+          <caret line="61" column="40" selection-start-line="61" selection-end-line="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/Production.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/input/menu/ActionOpcodes.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/motherlodeMine/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="43" column="33" selection-start-line="43" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/smlting/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/woodcutting/WuCutting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/woodcutting/data/Tree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/package-info.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RangeAttack/RangeAttack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="62" column="82" selection-start-line="62" selection-start-column="82" selection-end-line="62" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Magic.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="142" column="69" selection-start-line="142" selection-start-column="57" selection-end-line="142" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.rspeer/1.78.jar!/org/rspeer/runetek/api/component/tab/Skills.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="96" column="22" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/craftGlass/AGlassBlower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="47" selection-start-line="47" selection-end-line="51" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/smlting/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="27" column="39" lean-forward="true" selection-start-line="27" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/magic/magicBot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="75" column="34" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
