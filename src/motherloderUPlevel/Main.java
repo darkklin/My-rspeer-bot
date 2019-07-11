@@ -5,25 +5,38 @@ import org.rspeer.runetek.adapter.component.InterfaceComponent;
 import org.rspeer.runetek.adapter.component.Item;
 import org.rspeer.runetek.adapter.scene.Player;
 import org.rspeer.runetek.adapter.scene.SceneObject;
+import org.rspeer.runetek.api.commons.StopWatch;
 import org.rspeer.runetek.api.commons.Time;
 import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.Bank;
 import org.rspeer.runetek.api.component.Interfaces;
 import org.rspeer.runetek.api.component.tab.Combat;
 import org.rspeer.runetek.api.component.tab.Inventory;
+import org.rspeer.runetek.api.component.tab.Skill;
+import org.rspeer.runetek.api.component.tab.Skills;
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.movement.position.Area;
 import org.rspeer.runetek.api.movement.position.Position;
 import org.rspeer.runetek.api.scene.Players;
 import org.rspeer.runetek.api.scene.SceneObjects;
+import org.rspeer.runetek.event.listeners.RenderListener;
+import org.rspeer.runetek.event.types.RenderEvent;
 import org.rspeer.script.Script;
 import org.rspeer.script.ScriptCategory;
 import org.rspeer.script.ScriptMeta;
 import org.rspeer.ui.Log;
 import smlting.Context;
 
+import java.awt.*;
+
 @ScriptMeta(version = 0.01, name = "motherlodeMineUp", category = ScriptCategory.MINING, developer = "darkklin", desc = "mining Dirt")
-public class Main extends Script {
+public class Main extends Script  implements RenderListener {
+
+    private static final Skill skill = Skill.MINING;
+    private static final int INIT_XP = Skills.getExperience(skill);
+    private StopWatch stopWatch;
+
+    private static String status = "Init";
 
     public Area ORE_VEIN_AREA = Area.rectangular(3749, 5685, 3763, 5669);
     Area WHILS_aREA = Area.rectangular(3743, 5672, 3739, 5660);
@@ -51,7 +64,11 @@ public class Main extends Script {
     String action = "null";
     int depositCount = 3;
     int withdraw = 0;
-
+    @Override
+    public void onStart() {
+        stopWatch = StopWatch.start();
+        Log.info("Started " + getMeta().name() + " script.");
+    }
     @Override
     public int loop() {
         final SceneObject oreVein = SceneObjects.getNearest(x -> x.getName().contains("Ore vein")  && x.getY() != 5679 && x.getY() != 5676   && x.getY() != 5683 && x.getY() != 5682 && x.getY() != 5682 && x.getY() != 5686 && x.getY() != 5681 && x.getY() != 5684 && x.getY() != 5685);
@@ -73,6 +90,13 @@ public class Main extends Script {
 
             Log.info("test this while");
             while (nmDirt != 0) {
+
+                if(ORE_VEIN_AREATWO.contains(me))
+                {
+                    Log.info("Climb down ");
+                    ladderDown.interact("Climb");
+                    Time.sleepUntil(() -> depositArea.contains(me), 3500);
+                }
                 SceneObject sack = SceneObjects.getNearest("Sack");
                 sack.interact("search");
                 Time.sleepUntil(() -> (Inventory.getCount() > 1), 8000);
@@ -108,7 +132,7 @@ public class Main extends Script {
                 Log.info(oreVein.getPosition());
                 Log.info(oreVein.getId());
 
-                String action = "mining";
+                status = "mining";
                 oreVein.interact("Mine");
                 Time.sleepUntil(() -> me.isAnimating(), 3000);
                 if (oreVein.distance() == 1 && me.isAnimating()) {
@@ -126,6 +150,8 @@ public class Main extends Script {
             }
 
         } else {
+            status = "Looking";
+
             if (!ORE_VEIN_AREATWO.contains(oreVein)) {
                 Movement.walkTo(ladderDown.getPosition());
                 Time.sleepUntil(() -> ladderDown.getPosition() == me.getPosition(), 6000);
@@ -133,6 +159,7 @@ public class Main extends Script {
         }
 
         if (ORE_VEIN_AREATWO.contains(me) && nmDirtInDeposit.getTextColor() == 16711680) {
+            status = "Climb down";
 
             Log.info("Climb down ");
             ladderDown.interact("Climb");
@@ -141,13 +168,16 @@ public class Main extends Script {
 
 
         if (Inventory.isFull() && !depositArea.contains(me)) {
+            status = "Climb down";
+
             Log.info("Climb down ");
             ladderDown.interact("Climb");
-            Time.sleepUntil(() -> depositArea.contains(me), 4000);
             Time.sleepUntil(() -> depositArea.contains(me), 3500);
         }
 
         if (depositArea.contains(me) && Inventory.contains(12011) && Inventory.isFull()) {
+            status = "deposit the dirt";
+
             Log.info("should deposit the dirt");
             SceneObject hepper = SceneObjects.getNearest("Hopper");
 
@@ -160,6 +190,8 @@ public class Main extends Script {
             }
 
             if (brokenStrut != null && !Inventory.contains(12011) && depositArea.contains(me) || WHILS_aREA.contains(me)) {
+                status = "take hemmer";
+
                 Log.info("should take hemmer");
                 SceneObject crate = SceneObjects.getNearest(x -> x.getName().contains("Crate") && x.getY() == 5674);
 
@@ -169,6 +201,7 @@ public class Main extends Script {
                 }
 
                 if (Inventory.contains("Hammer") && brokenStrut != null) {
+                    status = "fix the broken strut";
 
                     Log.info("should fix the broken strut");
                     brokenStrut.interact("Hammer");
@@ -177,22 +210,22 @@ public class Main extends Script {
 
 
                 }
-                if (Inventory.contains("Hammer") && brokenStrut == null) {
-                    Log.info("should drop the Hammer");
-                    for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
-                        Time.sleep(600);
-                        hammer.interact("Drop");
-                        Time.sleepUntil(() -> !Inventory.contains("Hammer"), 2500);
-                    }
-                }
 
             }
-
+            if (Inventory.contains("Hammer") && status !="fix the broken strut") {
+                Log.info("should drop the Hammer");
+                for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
+                    Time.sleep(600);
+                    hammer.interact("Drop");
+                    Time.sleepUntil(() -> !Inventory.contains("Hammer"), 2500);
+                }
+            }
 
         }
         if (depositArea.contains(me) || WHILS_aREA.contains(me) && brokenStrut == null) {
 
             if (!Inventory.isEmpty() && !Inventory.contains(12011)) {
+                status = " bank";
 
                 depositBank();
             }
@@ -207,6 +240,38 @@ public class Main extends Script {
         Log.info((brokenStrut != null) + "<<<<<<<<<<<<<<<<");
         return 0;
 
+    }
+
+    @Override
+    public void onStop() {
+        Log.severe("Stopped " + getMeta().name() + " script. Status = " + status);
+    }
+
+    @Override
+    public void notify(RenderEvent e) {
+        long seconds = stopWatch.getElapsed().getSeconds();
+        if (seconds <= 0)
+            return;
+
+        //Initialize our graphics
+        Graphics g = e.getSource();
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        int y = 38;
+        int x = 9;
+        //Background semi-transparent fill
+        g.setColor(new Color(0, 0, 0, 60));
+        g.fillRect(x - 3, 38 - 13, 175, 100);
+
+        g2.setColor(Color.white);
+        g2.drawString("Runtime: " + stopWatch.toElapsedString() + " (" + (status != null ? status : "") + ")", x, y);
+        g2.drawString("Mining [" + Skills.getCurrentLevel(skill) + "]", x, y += 20);
+        g2.drawString("XP to next lvl: " + Skills.getExperienceToNextLevel(skill), x, y += 20);
+
+        //Xp gains
+        int craftXp = Skills.getExperience(skill) - INIT_XP;
+        if (craftXp > 0)
+            g2.drawString("+ Crafting XP: " + craftXp + " (" + (int) stopWatch.getHourlyRate(craftXp) / 1000 + "k /h)", x, y += 20);
     }
 
     public void depositBank() {

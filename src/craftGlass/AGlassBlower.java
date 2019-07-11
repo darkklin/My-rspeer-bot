@@ -115,6 +115,7 @@ public final class AGlassBlower extends Script implements RenderListener {
 
 
         if (Dialog.canContinue()) {
+
             status = "Level-up";
             Time.sleep(300, 800);
             if (Dialog.processContinue()) {
