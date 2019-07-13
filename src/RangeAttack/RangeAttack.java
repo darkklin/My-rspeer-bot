@@ -28,6 +28,7 @@ import java.awt.*;
 @ScriptMeta(version = 0.01, name = "RANGE", category = ScriptCategory.COMBAT, developer = "darkklin", desc = "Traning range")
 public class RangeAttack extends Script implements RenderListener {
 
+    private static final Skill skill = Skill.DEFENCE;
 
     private static long startTime;
     private static long startXp;
@@ -52,19 +53,20 @@ public class RangeAttack extends Script implements RenderListener {
         time = StopWatch.start();
 
         startTime = System.currentTimeMillis();
-        startXp = Skills.getExperience(Skill.ATTACK);
-        startLvl = Skills.getLevel(Skill.ATTACK);
+        startXp = Skills.getExperience(skill);
+        startLvl = Skills.getLevel(skill);
 
     }
 //&& (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0)
     @Override
     public int loop() {
         Player me = Players.getLocal();
-        Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().contains("black") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
-        Pickable groundBones = Pickables.getNearest(x -> x.getName().replaceAll(" ","").toLowerCase().contains("big") && x.distance(me) < 20 && x.distance(enemy) < 20);
+        Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().contains("baby") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
+        Pickable groundBones = Pickables.getNearest(x -> x.getName().replaceAll(" ","").toLowerCase().contains("babydragon") && x.distance(me) < 20 && x.distance(enemy) < 20);
 
         Pickable groudArrow = Pickables.getNearest(x -> x.getName().toLowerCase().contains("rune") && x.distance(me) < 20 && x.distance(enemy) < 20);
-        Item invBones = Inventory.getLast("Big bones");
+        Item invBones = Inventory.getLast("Babydragon bones");
+
         Item invArrow = Inventory.getFirst("Iron arrow");
 
         if (!Movement.isRunEnabled() && Movement.getRunEnergy() > Random.nextInt(5, 15))
@@ -176,11 +178,11 @@ public class RangeAttack extends Script implements RenderListener {
 
         final long upTime = System.currentTimeMillis() - startTime;
         g.drawString("Runtime: " + time.toElapsedString(), 5, 270);
-        g.drawString("Current Level: " + Skills.getLevel(Skill.ATTACK) + ("(" + experience.gainedLvl(Skill.ATTACK, startLvl) + ")"), 5, 280);
-        g.drawString("XP Gained: " + experience.gainedXp(Skill.ATTACK, startXp), 5, 295);
-        g.drawString("XP To Level: " + experience.xpToLvl(Skill.ATTACK), 5, 310);
-        g.drawString("XP/HR: " + experience.xpHour(Skill.ATTACK, startXp, upTime), 5, 325);
-        g.drawString("% To Level: " + experience.percentToLvl(Skill.ATTACK), 5, 340);
+        g.drawString("Current Level: " + Skills.getLevel(skill) + ("(" + experience.gainedLvl(skill, startLvl) + ")"), 5, 280);
+        g.drawString("XP Gained: " + experience.gainedXp(skill, startXp), 5, 295);
+        g.drawString("XP To Level: " + experience.xpToLvl(skill), 5, 310);
+        g.drawString("XP/HR: " + experience.xpHour(skill, startXp, upTime), 5, 325);
+        g.drawString("% To Level: " + experience.percentToLvl(skill), 5, 340);
 
     }
 
