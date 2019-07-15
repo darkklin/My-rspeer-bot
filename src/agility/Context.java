@@ -1,9 +1,12 @@
 package agility;
 
 import org.rspeer.runetek.adapter.scene.Pickable;
+import org.rspeer.runetek.adapter.scene.Player;
 import org.rspeer.runetek.api.commons.Time;
 import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.tab.Inventory;
+import org.rspeer.runetek.api.component.tab.Magic;
+import org.rspeer.runetek.api.component.tab.Spell;
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.movement.position.Area;
 import org.rspeer.runetek.api.scene.Pickables;
@@ -26,15 +29,6 @@ public class Context {
     public static void takeGrace(Area place) {
         Pickable markOfGrace = Pickables.getNearest(11849);
         Inventory.getCount(11849);
-//        if (place.contains(markOfGrace))
-//        {
-//            Log.info("should take mark of grace");
-//            markOfGrace.interact("Take");
-//            Log.info(markOfGrace!=null);
-//            Time.sleepUntil(() -> (markOfGrace ==null),  Random.nextInt(8000,15000));
-//
-//        }
-
         while(place.contains(markOfGrace))
         {
             Log.info("should take mark of grace");
@@ -44,5 +38,19 @@ public class Context {
 
         }
 
+    }
+    public static void alchemy( Player me, int TOOL,int RESOURCE){
+
+        if (me.isMoving()|| !me.isAnimating())
+        {
+            if (Inventory.contains(RESOURCE, TOOL)&&!me.isAnimating()) {
+                Log.info("should alch ");
+                Magic.cast(Spell.Modern.HIGH_LEVEL_ALCHEMY, Inventory.getLast(RESOURCE));
+                Time.sleepUntil(()->!me.isAnimating(),800,1500);
+
+
+
+            }
+        }
     }
 }

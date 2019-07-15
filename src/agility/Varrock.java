@@ -23,7 +23,7 @@ import org.rspeer.ui.Log;
 
 import java.awt.*;
 
-@ScriptMeta(name = "Varrock Agility", version = 0.1, desc = "Agility", developer = "darkklin", category = ScriptCategory.AGILITY)
+@ScriptMeta(name = "Agility Varrock", version = 0.1, desc = "Agility", developer = "darkklin", category = ScriptCategory.AGILITY)
 public class Varrock extends Script implements RenderListener {
     private static final Skill skill = Skill.AGILITY;
     private static final int INIT_XP = Skills.getExperience(skill);

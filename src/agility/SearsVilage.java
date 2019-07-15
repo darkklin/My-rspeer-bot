@@ -5,7 +5,8 @@ import org.rspeer.runetek.adapter.scene.SceneObject;
 import org.rspeer.runetek.api.commons.StopWatch;
 import org.rspeer.runetek.api.commons.Time;
 import org.rspeer.runetek.api.commons.math.Random;
-import org.rspeer.runetek.api.component.tab.*;
+import org.rspeer.runetek.api.component.tab.Skill;
+import org.rspeer.runetek.api.component.tab.Skills;
 import org.rspeer.runetek.api.movement.Movement;
 import org.rspeer.runetek.api.movement.position.Area;
 import org.rspeer.runetek.api.movement.position.Position;
@@ -20,9 +21,9 @@ import org.rspeer.ui.Log;
 
 import java.awt.*;
 
-@ScriptMeta(name = "Agility Canifis", version = 0.1, desc = "Agility", developer = "darkklin", category = ScriptCategory.AGILITY)
+@ScriptMeta(name = "Agility SearsVilage", version = 0.1, desc = "Agility", developer = "darkklin", category = ScriptCategory.AGILITY)
 
-public class Canifis extends Script implements RenderListener {
+public class SearsVilage extends Script implements RenderListener {
     private static final Skill skill = Skill.AGILITY;
     private static final Skill skillMagic = Skill.MAGIC;
 
@@ -43,44 +44,42 @@ public class Canifis extends Script implements RenderListener {
     public int loop() {
         Player me = Players.getLocal();
         Position STOCK_POSITION = new Position(3505, 3489, 2);
-        Area CANIFIS_AREA = Area.rectangular(3516, 3509, 3472, 3468);
-        Area START_AREA = Area.rectangular(3510, 3490, 3503, 3487);
-        Area AREA_NUM_1 = Area.rectangular(3511, 3499, 3503, 3491, 2);
-        Area AREA_NUM_2 = Area.rectangular(3504, 3508, 3495, 3502, 2);
-        Area AREA_NUM_3 = Area.rectangular(3493, 3506, 3484, 3497, 2);
-        Area AREA_NUM_4 = Area.rectangular(3480, 3500, 3474, 3491, 3);
-        Area AREA_NUM_5 = Area.rectangular(3485, 3488, 3475, 3480, 2);
-        Area AREA_NUM_6 = Area.rectangular(3487, 3480, 3504, 3467, 3);
-        Area FINISH_AREA = Area.rectangular(3517, 3483, 3507, 3474, 2);
+        Area SearsVilage_AREA = Area.rectangular(2732, 3502, 2680, 3454);
+        Area START_AREA = Area.rectangular(2732, 3489, 2728, 3486);
+        Area AREA_NUM_1 = Area.rectangular(2730, 3490, 2718, 3497,3);
+        Area AREA_NUM_2 = Area.rectangular(2715, 3499, 2703, 3487,2);
+        Area AREA_NUM_3 = Area.rectangular(2717, 3483, 2708, 3475,2);
+        Area AREA_NUM_4 = Area.rectangular(2717, 3473, 2698, 3470,3);
+        Area FINISH_AREA = Area.rectangular(2704, 3467, 2688, 3458,2);
 
-        SceneObject tallTree = SceneObjects.getNearest(14843);
+        SceneObject wall = SceneObjects.getNearest(14927);
         SceneObject gap = SceneObjects.getNearest("Gap");
-        SceneObject gapArea3 = SceneObjects.getNearest(14848);
+        SceneObject tighrope = SceneObjects.getNearest(14932);
         SceneObject poleVault = SceneObjects.getNearest("Pole-vault");
-        SceneObject GAP_NUM_4 = SceneObjects.getNearest(14846);
+        SceneObject edge = SceneObjects.getNearest(14931);
+        SceneObject gap_4 = SceneObjects.getNearest(14930);
 
-        if (STOCK_POSITION.equals(me.getPosition())) {
-            Log.info("stuck");
-            gap.click();
-        }
+
+
 
         if (Movement.isDestinationSet()) {
             Context.checkRunEnergy();
         }
-        Context.alchemy(me, TOOL, RESOURCE);
 
-        if (CANIFIS_AREA.contains(me)) {
+        if (SearsVilage_AREA.contains(me)) {
 
-            Log.info(tallTree != null);
+
             if (START_AREA.contains(me)&& !me.isAnimating()) {
 
 
-                tallTree.interact("Climb");
+                wall.interact("Climb-up");
                 Time.sleepUntil(() -> !START_AREA.contains(me) && !me.isAnimating(), Random.nextInt(2000, 2500));
 
             } else {
+                Context.alchemy(me, TOOL, RESOURCE);
+
                 Movement.walkToRandomized(START_AREA.getCenter());
-                Time.sleepUntil(() -> START_AREA.contains(me), Random.nextInt(1000, 2500));
+                Time.sleepUntil(() -> START_AREA.contains(me), Random.nextInt(3000, 6500));
             }
 
         }
@@ -104,7 +103,7 @@ public class Canifis extends Script implements RenderListener {
             Time.sleep(800, 1550);
             Context.takeGrace(AREA_NUM_2);
 
-            gap.interact("Jump");
+            tighrope.interact("Cross");
 
             Time.sleepUntil(() -> !AREA_NUM_2.contains(me), 8000);
 
@@ -117,8 +116,8 @@ public class Canifis extends Script implements RenderListener {
             Time.sleep(800, 1550);
             Context.takeGrace(AREA_NUM_3);
 
-            if (gapArea3 != null) {
-                gapArea3.interact("Jump");
+            if (gap != null) {
+                gap.interact("Jump");
                 Time.sleepUntil(() -> !AREA_NUM_3.contains(me), 4500, 8000);
             }
             Context.alchemy(me, TOOL, RESOURCE);
@@ -126,61 +125,35 @@ public class Canifis extends Script implements RenderListener {
 
         }
         if (AREA_NUM_4.contains(me) && !me.isAnimating()) {
-            Context.alchemy(me, TOOL, RESOURCE);
 
             Log.info("AREA NM 4");
-            Time.sleep(1000, 2500);
+            Time.sleep(500, 1550);
             Context.takeGrace(AREA_NUM_4);
-            if (GAP_NUM_4 != null) {
-                GAP_NUM_4.interact("Jump");
+            if (gap_4 != null) {
+                gap_4.interact("Jump");
                 Time.sleepUntil(() -> !AREA_NUM_4.contains(me), 4500, 8000);
 
             }
-            Context.alchemy(me, TOOL, RESOURCE);
-
-
-        }
-        if (AREA_NUM_5.contains(me) && !me.isAnimating()) {
-            Context.alchemy(me, TOOL, RESOURCE);
-
-            Log.info("AREA NM 5");
-            Time.sleep(800, 1550);
-            Context.takeGrace(AREA_NUM_5);
-
-            if (poleVault != null) {
-                poleVault.interact("Vault");
-                Time.sleepUntil(() -> !AREA_NUM_5.contains(me), 1500, 6000);
+            else{
+                Context.alchemy(me, TOOL, RESOURCE);
 
             }
-            Context.alchemy(me, TOOL, RESOURCE);
-
-
-        }
-        if (AREA_NUM_6.contains(me) && !me.isAnimating()) {
-            Context.alchemy(me, TOOL, RESOURCE);
-
-            Log.info("AREA NM 6");
-            Time.sleep(800, 1550);
-            Context.takeGrace(AREA_NUM_6);
-
-            gap.interact("Jump");
-            Context.alchemy(me, TOOL, RESOURCE);
-
-//            Time.sleepUntil(() -> !AREA_NUM_6.contains(me), 8000);
 
 
         }
         if (FINISH_AREA.contains(me) && !me.isAnimating()) {
-            Context.alchemy(me, TOOL, RESOURCE);
-
             Log.info("AREA NM 7");
             Time.sleep(800, 1550);
             Context.takeGrace(FINISH_AREA);
+            if (edge != null) {
+                edge.interact("Jump");
+                Time.sleepUntil(() -> !AREA_NUM_4.contains(me), 4500, 8000);
 
-            gap.interact("Jump");
-            Context.alchemy(me, TOOL, RESOURCE);
+            }
+            else{
+                Context.alchemy(me, TOOL, RESOURCE);
 
-//            Time.sleepUntil(() -> !FINISH_AREA.contains(me), 8000);
+            }
 
 
         }

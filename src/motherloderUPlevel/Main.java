@@ -113,9 +113,8 @@ public class Main extends Script  implements RenderListener {
 
 
         }
-        if ( rockFall != null &&ORE_VEIN_AREATWO.contains(me))
+        if ( rockFall != null &&ORE_VEIN_AREATWO.contains(me) && status == "Climb down")
         {
-            Log.info(rockFall.distance());
 
             if (rockFall.distance() == 1)
             {
@@ -205,29 +204,29 @@ public class Main extends Script  implements RenderListener {
 
                     Log.info("should fix the broken strut");
                     brokenStrut.interact("Hammer");
-                    Log.info(brokenStrut == null);
                     Time.sleepUntil(() -> (brokenStrut == null), 10000);
 
 
                 }
 
             }
-            if (Inventory.contains("Hammer") && status !="fix the broken strut") {
+
+
+        }
+        if (depositArea.contains(me) || WHILS_aREA.contains(me) && brokenStrut == null) {
+
+
+            if (!Inventory.isEmpty() && !Inventory.contains(12011) &&!Inventory.contains("Hammer")) {
+                status = " bank";
+                depositBank();
+            }
+            if (Inventory.contains("Hammer")){
                 Log.info("should drop the Hammer");
                 for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
                     Time.sleep(600);
                     hammer.interact("Drop");
                     Time.sleepUntil(() -> !Inventory.contains("Hammer"), 2500);
                 }
-            }
-
-        }
-        if (depositArea.contains(me) || WHILS_aREA.contains(me) && brokenStrut == null) {
-
-            if (!Inventory.isEmpty() && !Inventory.contains(12011)) {
-                status = " bank";
-
-                depositBank();
             }
             if (nmDirtInDeposit.getTextColor() != 16711680 && nmDirt <75)  {
                 Log.info("should go up ");
