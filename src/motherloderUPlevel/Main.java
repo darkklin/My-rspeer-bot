@@ -30,10 +30,11 @@ import smlting.Context;
 import java.awt.*;
 
 @ScriptMeta(version = 0.01, name = "motherlodeMineUp", category = ScriptCategory.MINING, developer = "darkklin", desc = "mining Dirt")
-public class Main extends Script  implements RenderListener {
+public class Main extends Script implements RenderListener {
 
     private static final Skill skill = Skill.MINING;
     private static final int INIT_XP = Skills.getExperience(skill);
+
     private StopWatch stopWatch;
 
     private static String status = "Init";
@@ -64,14 +65,17 @@ public class Main extends Script  implements RenderListener {
     String action = "null";
     int depositCount = 3;
     int withdraw = 0;
+
     @Override
     public void onStart() {
         stopWatch = StopWatch.start();
         Log.info("Started " + getMeta().name() + " script.");
     }
+
     @Override
     public int loop() {
-        final SceneObject oreVein = SceneObjects.getNearest(x -> x.getName().contains("Ore vein")  && x.getY() != 5679 && x.getY() != 5676   && x.getY() != 5683 && x.getY() != 5682 && x.getY() != 5682 && x.getY() != 5686 && x.getY() != 5681 && x.getY() != 5684 && x.getY() != 5685);
+        Position STOCK_POSTION = new Position(3756, 5676, 0);
+        final SceneObject oreVein = SceneObjects.getNearest(x -> x.getName().contains("Ore vein") && x.getY() != 5679 && x.getY() != 5676 && x.getY() != 5683 && x.getY() != 5682 && x.getY() != 5682 && x.getY() != 5686 && x.getY() != 5681 && x.getY() != 5684 && x.getY() != 5685);
         SceneObject brokenStrut = SceneObjects.getNearest(x -> x.getName().contains("Broken strut") && x.getY() == 5669);
         SceneObject brokenStrutTwo = SceneObjects.getNearest(x -> x.getName().contains("Broken strut"));
         SceneObject ladderDown = SceneObjects.getNearest(x -> x.getId() == 19045 && x.getY() == 5674);
@@ -86,13 +90,12 @@ public class Main extends Script  implements RenderListener {
         }
 
 
-        if (nmDirtInDeposit.getTextColor() == 16711680 || nmDirt >75 && !ORE_VEIN_AREATWO.contains(me)) {
+        if (nmDirtInDeposit.getTextColor() == 16711680 || nmDirt > 75 && !ORE_VEIN_AREATWO.contains(me)) {
 
             Log.info("test this while");
             while (nmDirt != 0) {
 
-                if(ORE_VEIN_AREATWO.contains(me))
-                {
+                if (ORE_VEIN_AREATWO.contains(me)) {
                     Log.info("Climb down ");
                     ladderDown.interact("Climb");
                     Time.sleepUntil(() -> depositArea.contains(me), 3500);
@@ -113,17 +116,27 @@ public class Main extends Script  implements RenderListener {
 
 
         }
-        if ( rockFall != null &&ORE_VEIN_AREATWO.contains(me) && status == "Climb down")
-        {
+        if (rockFall != null && ORE_VEIN_AREATWO.contains(me) && status == "Climb down") {
 
-            if (rockFall.distance() == 1)
-            {
+            if (rockFall.distance() == 1) {
                 rockFall.interact("Mine");
 
             }
 
         }
         if (ORE_VEIN_AREATWO.contains(oreVein) && !Inventory.isFull() && ORE_VEIN_AREATWO.contains(me) && nmDirtInDeposit.getTextColor() != 16711680) {
+
+            if (STOCK_POSTION.equals(me.getPosition())&& (rockFall != null))
+            {
+                Log.info("player stock");
+
+                if (rockFall.distance() == 2) {
+                    Log.info("should mine the rock fall");
+                    rockFall.interact("Mine");
+                    Time.sleepUntil(()->rockFall==null,2500);
+
+                }
+            }
             Log.info(ORE_VEIN_AREATWO.contains(oreVein));
 
             if (oreVein != null) {
@@ -136,10 +149,11 @@ public class Main extends Script  implements RenderListener {
                 Time.sleepUntil(() -> me.isAnimating(), 3000);
                 if (oreVein.distance() == 1 && me.isAnimating()) {
                     Log.info("here ...");
-                    Random.nextInt(600, 2000);
+                    Random.nextInt(800, 2100);
                     Time.sleepUntil(() -> oreVein.distance() > 1, Random.nextInt(3500, 6000));
 
                     if (Combat.getSpecialEnergy() == 100) {
+                        Time.sleep(1000,2000);
                         Log.info("We have special attack. Using special attack...");
                         Combat.toggleSpecial(true);
                         Time.sleepUntil(() -> Combat.getSpecialEnergy() < 100, 1000);
@@ -216,11 +230,11 @@ public class Main extends Script  implements RenderListener {
         if (depositArea.contains(me) || WHILS_aREA.contains(me) && brokenStrut == null) {
 
 
-            if (!Inventory.isEmpty() && !Inventory.contains(12011) &&!Inventory.contains("Hammer")) {
+            if (!Inventory.isEmpty() && !Inventory.contains(12011) && !Inventory.contains("Hammer")) {
                 status = " bank";
                 depositBank();
             }
-            if (Inventory.contains("Hammer")){
+            if (Inventory.contains("Hammer")) {
                 Log.info("should drop the Hammer");
                 for (Item hammer : Inventory.getItems(item -> item.getName().equals("Hammer"))) {
                     Time.sleep(600);
@@ -228,7 +242,7 @@ public class Main extends Script  implements RenderListener {
                     Time.sleepUntil(() -> !Inventory.contains("Hammer"), 2500);
                 }
             }
-            if (nmDirtInDeposit.getTextColor() != 16711680 && nmDirt <75)  {
+            if (nmDirtInDeposit.getTextColor() != 16711680 && nmDirt < 75) {
                 Log.info("should go up ");
                 ladderUp.interact("Climb");
                 Time.sleepUntil(() -> ORE_VEIN_AREATWO.contains(me), 3500);
@@ -292,9 +306,10 @@ public class Main extends Script  implements RenderListener {
     int countRune = 0;
     int countGold = 0;
 
-    int countCoal= 0;
-    int countAdam= 0;
+    int countCoal = 0;
+    int countAdam = 0;
     int countMithril = 0;
+
     public void countOra() {
 
         int rune = Inventory.getCount(451);
@@ -302,7 +317,6 @@ public class Main extends Script  implements RenderListener {
         int coal = Inventory.getCount(453);
         int adam = Inventory.getCount(449);
         int mithril = Inventory.getCount(447);
-
 
 
         countRune = countRune + rune;

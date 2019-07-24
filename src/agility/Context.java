@@ -43,7 +43,7 @@ public class Context {
 
         if (me.isMoving()|| !me.isAnimating())
         {
-            if (Inventory.contains(RESOURCE, TOOL)&&!me.isAnimating()) {
+            if (Inventory.contains(RESOURCE)&& Inventory.contains(TOOL) &&!me.isAnimating()) {
                 Log.info("should alch ");
                 Magic.cast(Spell.Modern.HIGH_LEVEL_ALCHEMY, Inventory.getLast(RESOURCE));
                 Time.sleepUntil(()->!me.isAnimating(),800,1500);

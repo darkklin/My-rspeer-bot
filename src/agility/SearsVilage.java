@@ -77,20 +77,18 @@ public class SearsVilage extends Script implements RenderListener {
 
             } else {
                 Context.alchemy(me, TOOL, RESOURCE);
-
-                Movement.walkToRandomized(START_AREA.getCenter());
-                Time.sleepUntil(() -> START_AREA.contains(me), Random.nextInt(3000, 6500));
+                Movement.walkTo(START_AREA.getCenter());
+                Time.sleepUntil(() -> START_AREA.contains(me), Random.nextInt(4000, 6500));
             }
 
         }
         if (AREA_NUM_1.contains(me) && !me.isAnimating()) {
             Log.info("AREA NM 1");
             Time.sleep(1000, 1550);
+            Context.alchemy(me, TOOL, RESOURCE);
             Context.takeGrace(AREA_NUM_1);
-
             if (gap != null) {
                 gap.interact("Jump");
-                Context.alchemy(me, TOOL, RESOURCE);
                 Time.sleepUntil(() -> !AREA_NUM_1.contains(me), 8000);
             }
 
@@ -128,32 +126,25 @@ public class SearsVilage extends Script implements RenderListener {
 
             Log.info("AREA NM 4");
             Time.sleep(500, 1550);
+            Context.alchemy(me, TOOL, RESOURCE);
             Context.takeGrace(AREA_NUM_4);
             if (gap_4 != null) {
                 gap_4.interact("Jump");
                 Time.sleepUntil(() -> !AREA_NUM_4.contains(me), 4500, 8000);
 
             }
-            else{
-                Context.alchemy(me, TOOL, RESOURCE);
-
-            }
-
 
         }
         if (FINISH_AREA.contains(me) && !me.isAnimating()) {
-            Log.info("AREA NM 7");
+            Log.info("FINISH AREA");
+            Context.alchemy(me, TOOL, RESOURCE);
             Time.sleep(800, 1550);
             Context.takeGrace(FINISH_AREA);
             if (edge != null) {
                 edge.interact("Jump");
-                Time.sleepUntil(() -> !AREA_NUM_4.contains(me), 4500, 8000);
-
+                Time.sleepUntil(() -> !FINISH_AREA.contains(me), 1000, 4000);
             }
-            else{
-                Context.alchemy(me, TOOL, RESOURCE);
 
-            }
 
 
         }
