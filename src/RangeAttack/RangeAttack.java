@@ -9,6 +9,7 @@ import org.rspeer.runetek.api.commons.StopWatch;
 import org.rspeer.runetek.api.commons.Time;
 import org.rspeer.runetek.api.commons.math.Random;
 import org.rspeer.runetek.api.component.Dialog;
+import org.rspeer.runetek.api.component.tab.Combat;
 import org.rspeer.runetek.api.component.tab.Inventory;
 import org.rspeer.runetek.api.component.tab.Skill;
 import org.rspeer.runetek.api.component.tab.Skills;
@@ -28,12 +29,12 @@ import java.awt.*;
 @ScriptMeta(version = 0.01, name = "RANGE", category = ScriptCategory.COMBAT, developer = "darkklin", desc = "Traning range")
 public class RangeAttack extends Script implements RenderListener {
 
-    private static final Skill skill = Skill.DEFENCE;
+    private static final Skill skill = Skill.STRENGTH;
 
     private static long startTime;
     private static long startXp;
     private static int startLvl;
-    private static Foodtype FOOD_TYPE = Foodtype.MONKFISH;
+    private static Foodtype FOOD_TYPE = Foodtype.SHARK;
     String action = "Idle";
     StopWatch time;
 
@@ -61,11 +62,12 @@ public class RangeAttack extends Script implements RenderListener {
     @Override
     public int loop() {
         Player me = Players.getLocal();
-        Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().contains("baby") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
+        Npc enemy = Npcs.getNearest(x -> x.getName().toLowerCase().contains("ankou") && (x.getTargetIndex() == -1 || x.getTarget().equals(me)) && x.getHealthPercent() > 0);
         Pickable groundBones = Pickables.getNearest(x -> x.getName().replaceAll(" ","").toLowerCase().contains("babydragon") && x.distance(me) < 20 && x.distance(enemy) < 20);
 
-        Pickable groudArrow = Pickables.getNearest(x -> x.getName().toLowerCase().contains("rune") && x.distance(me) < 20 && x.distance(enemy) < 20);
-        Item invBones = Inventory.getLast("Babydragon bones");
+        Pickable groudArrow = Pickables.getNearest(x -> x.getName().toLowerCase().contains("rune") || x.getName().toLowerCase().contains("grimy") && x.distance(me) < 20 && x.distance(enemy) < 20);
+
+        Item invBones = Inventory.getLast("Wyrm bones");
 
         Item invArrow = Inventory.getFirst("Iron arrow");
 
@@ -95,12 +97,12 @@ public class RangeAttack extends Script implements RenderListener {
 
         }
         //Wield arrow random amount
-        int randomStockSize = Random.nextInt(32, 150);
-        if ((invArrow != null && invArrow.getStackSize() > randomStockSize) || (invArrow != null && Inventory.isFull()) ) {
-            Log.info("String random Stock size = " + randomStockSize);
-            invArrow.interact("Wield");
-
-        }
+//        int randomStockSize = Random.nextInt(32, 150);
+//        if ((invArrow != null && invArrow.getStackSize() > randomStockSize) || (invArrow != null && Inventory.isFull()) ) {
+//            Log.info("String random Stock size = " + randomStockSize);
+//            invArrow.interact("Wield");
+//
+//        }
         if (groundBones != null && enemy.getTargetIndex() == -1 && groundBones.distance(me) < 6 && !Inventory.isFull() ) {
             action = "TakeBones";
             Time.sleep(250, 450);
@@ -128,7 +130,14 @@ public class RangeAttack extends Script implements RenderListener {
                 if (enemy != null) {
                     Log.info(action);
                     if (!me.isMoving()) {
+
                         enemy.interact("Attack");
+                        if (Combat.getSpecialEnergy() == 100) {
+                            Time.sleep(1000,2000);
+                            Log.info("We have special attack. Using special attack...");
+                            Combat.toggleSpecial(true);
+                            Time.sleepUntil(() -> Combat.getSpecialEnergy() < 100, 1000);
+                        }
                         Time.sleepUntil(me::isAnimating, Random.nextInt(4000, 5000));
 
                     }

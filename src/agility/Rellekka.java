@@ -1,5 +1,4 @@
 package agility;
-
 import org.rspeer.runetek.adapter.scene.Player;
 import org.rspeer.runetek.adapter.scene.SceneObject;
 import org.rspeer.runetek.api.commons.StopWatch;
@@ -21,9 +20,9 @@ import org.rspeer.ui.Log;
 
 import java.awt.*;
 
-@ScriptMeta(name = "Agility SearsVilage", version = 0.1, desc = "Agility", developer = "darkklin", category = ScriptCategory.AGILITY)
+@ScriptMeta(name = "Agility Rellekka", version = 0.1, desc = "Agility", developer = "darkklin", category = ScriptCategory.AGILITY)
 
-public class SearsVilage extends Script implements RenderListener {
+public class Rellekka extends Script implements RenderListener {
     private static final Skill skill = Skill.AGILITY;
     private static final Skill skillMagic = Skill.MAGIC;
 
@@ -44,18 +43,20 @@ public class SearsVilage extends Script implements RenderListener {
     public int loop() {
         Player me = Players.getLocal();
         Position STOCK_POSITION = new Position(3505, 3489, 2);
-        Area SearsVilage_AREA = Area.rectangular(2732, 3502, 2680, 3454);
-        Area START_AREA = Area.rectangular(2732, 3489, 2728, 3486);
-        Area AREA_NUM_1 = Area.rectangular(2730, 3490, 2718, 3497,3);
-        Area AREA_NUM_2 = Area.rectangular(2715, 3499, 2703, 3487,2);
-        Area AREA_NUM_3 = Area.rectangular(2717, 3483, 2708, 3475,2);
-        Area AREA_NUM_4 = Area.rectangular(2717, 3473, 2698, 3470,3);
-        Area FINISH_AREA = Area.rectangular(2704, 3467, 2688, 3458,2);
+        Area Relleka_AREA = Area.rectangular(2676, 3707, 2610, 3647);
+        Area START_AREA = Area.rectangular(2627, 3680, 2620, 3677);
+        Area AREA_NUM_1 = Area.rectangular(2626, 3676, 2622, 3672,3);
+        Area AREA_NUM_2 = Area.rectangular(2622, 3669, 2615, 3657,3);
+        Area AREA_NUM_3 =Area.rectangular(2630, 3655, 2626, 3651,3);
+        Area AREA_NUM_4 = Area.rectangular(2644, 3653, 2639, 3649,3);
 
-        SceneObject wall = SceneObjects.getNearest(14927);
+        Area AREA_NUM_5 = Area.rectangular(2650, 3662, 2643, 3657,3);
+        Area FINISH_AREA = Area.rectangular(2662, 3681, 2655, 3665,3);
+
+        SceneObject wall = SceneObjects.getNearest(14946);
         SceneObject gap = SceneObjects.getNearest("Gap");
-        SceneObject tighrope = SceneObjects.getNearest(14932);
-        SceneObject poleVault = SceneObjects.getNearest("Pole-vault");
+        SceneObject tighrope = SceneObjects.getNearest("Tightrope");
+        SceneObject pileOfFish = SceneObjects.getNearest("Pile of fish");
         SceneObject edge = SceneObjects.getNearest(14931);
         SceneObject gap_4 = SceneObjects.getNearest(14930);
 
@@ -66,13 +67,13 @@ public class SearsVilage extends Script implements RenderListener {
             Context.checkRunEnergy();
         }
 
-        if (SearsVilage_AREA.contains(me)) {
+        if (Relleka_AREA.contains(me)) {
 
 
             if (START_AREA.contains(me)&& !me.isAnimating()) {
 
 
-                wall.interact("Climb-up");
+                wall.interact("Climb");
                 Time.sleepUntil(() -> !me.isAnimating(), Random.nextInt(2000, 2500));
 
             } else {
@@ -88,7 +89,7 @@ public class SearsVilage extends Script implements RenderListener {
             Context.alchemy(me, TOOL, RESOURCE);
             Context.takeGrace(AREA_NUM_1);
             if (gap != null) {
-                gap.interact("Jump");
+                gap.interact("Leap");
                 Time.sleepUntil(() -> !AREA_NUM_1.contains(me), 8000);
             }
 
@@ -115,7 +116,7 @@ public class SearsVilage extends Script implements RenderListener {
             Context.takeGrace(AREA_NUM_3);
 
             if (gap != null) {
-                gap.interact("Jump");
+                gap.interact("Leap");
                 Time.sleepUntil(() -> !AREA_NUM_3.contains(me), 4500, 8000);
             }
             Context.alchemy(me, TOOL, RESOURCE);
@@ -128,10 +129,21 @@ public class SearsVilage extends Script implements RenderListener {
             Time.sleep(500, 1550);
             Context.alchemy(me, TOOL, RESOURCE);
             Context.takeGrace(AREA_NUM_4);
-            if (gap_4 != null) {
-                gap_4.interact("Jump");
+            if (gap != null) {
+                gap.interact("Hurdle");
                 Time.sleepUntil(() -> !AREA_NUM_4.contains(me), 4500, 8000);
 
+            }
+
+        }
+        if (AREA_NUM_5.contains(me) && !me.isAnimating()) {
+            Log.info("FINISH AREA");
+            Context.alchemy(me, TOOL, RESOURCE);
+            Time.sleep(800, 1550);
+            Context.takeGrace(AREA_NUM_5);
+            if (tighrope != null) {
+                tighrope.interact("Cross");
+                Time.sleepUntil(() -> !AREA_NUM_5.contains(me), 1000, 4000);
             }
 
         }
@@ -140,12 +152,10 @@ public class SearsVilage extends Script implements RenderListener {
             Context.alchemy(me, TOOL, RESOURCE);
             Time.sleep(800, 1550);
             Context.takeGrace(FINISH_AREA);
-            if (edge != null) {
-                edge.interact("Jump");
+            if (pileOfFish != null) {
+                pileOfFish.interact("Jump-in");
                 Time.sleepUntil(() -> !FINISH_AREA.contains(me), 1000, 4000);
             }
-
-
 
         }
 
@@ -193,3 +203,4 @@ public class SearsVilage extends Script implements RenderListener {
         }
     }
 }
+
