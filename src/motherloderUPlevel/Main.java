@@ -89,7 +89,6 @@ public class Main extends Script implements RenderListener {
             Context.checkRunEnergy();
         }
 
-
         if (nmDirtInDeposit.getTextColor() == 16711680 || nmDirt > 75 && !ORE_VEIN_AREATWO.contains(me)) {
 
             Log.info("test this while");
@@ -116,7 +115,7 @@ public class Main extends Script implements RenderListener {
 
 
         }
-        if (rockFall != null && ORE_VEIN_AREATWO.contains(me) && status == "Climb down") {
+        if (rockFall != null && ORE_VEIN_AREATWO.contains(me)) {
 
             if (rockFall.distance() == 1) {
                 rockFall.interact("Mine");
